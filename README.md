@@ -1,4 +1,7 @@
-# Template for Master Thesis at DTETI UGM
+# Latex Template for Master Thesis at DTETI UGM
+
+# How-to-use 
+Read the detailed information in **thesis_template.tex**
 
 ## The package contains:
 ### Main files
@@ -37,9 +40,6 @@ Only used for template sample.
 * references.bib (Bibtex file)
 * thesis_template_bahasa.pdf (PDF result in indonesian)
 * thesis_template_english.pdf (PDF result in english)
-
-# How-to-use 
-Information can be read in thesis_template.tex
 
 ## License
 MIT License
