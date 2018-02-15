@@ -6,7 +6,7 @@
 %%%  [canggihpw@gmail.com]
 %%%  ---
 %%%  This class file can be freely modified
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %======================================
 %% Identification
