@@ -1,0 +1,99 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Filename: thesis_template.tex
+%%%  ---
+%%%  Template for Master Thesis at DTETI UGM   		
+%%%  Created using thesisdtetiugm.cls
+%%%  --- 
+%%%  Written by Canggih Puspo Wibowo
+%%%  [canggihpw@gmail.com]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use option "bahasa" or "english" 
+%%    to change the basic language used
+\documentclass[bahasa]{thesisdtetiugm}
+
+% Only for writing dummy
+% You can remove this line 
+\usepackage{kantlipsum}
+
+%======================================
+% Information Input
+%======================================
+% Input author's name and ID number
+\author{Canggih Puspo Wibowo}{<<NIM>>}
+% Input the thesis' title
+\title{<<Thesis title>>}
+
+% Program and the head of the program
+\program{<<Program name>>}{<<Program coordinator>>}{<<NIP>>}
+% Name of department head and NIP
+\departmenhead{<<Head of the department>>}{<<NIP>>}
+\major{<<Major>>}
+\yearsubmit{<<year submit>>}
+\examdate{<<Exam date>>}
+% Name of exam committees
+\committee{<<Examiner 1>>}{<<Examiner 2>>}
+% Name of thesis supervisors
+\firstsupervisor{<<Supervisor 1>>}
+\secondsupervisor{<<Supervisor 2>>}
+%======================================
+
+% correct bad hyphenation here [example]
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+%======================================
+% Create cover etc
+%======================================
+\printcover{sample/logougm.png}
+\printapproval
+\chapterstatement{contents/statement/statement}
+\chapterpreface{contents/preface/preface}
+\chapternomenclature{contents/nomenclature/nomenclature}
+\chapterabstract{contents/abstract/abstract}
+\chapterintisari{contents/abstract/intisari}
+%======================================
+
+%======================================
+% Create Table of Contents, List of Figures, List of Tables
+% <Do not change this part>
+%======================================
+\thetoc
+\tableofcontents
+\thelof
+\listoffigures
+\thelot
+\listoftables
+%======================================
+
+%======================================
+%  MAIN TEXT
+%======================================
+\startmain
+% You can change 
+%    the filename and location of the files inputted
+\include{contents/chapter-1/chapter-1}
+\include{contents/chapter-2/chapter-2}
+\include{contents/chapter-3/chapter-3}
+\include{contents/chapter-4/chapter-4}
+\include{contents/chapter-5/chapter-5}
+%======================================
+
+%======================================
+%  References
+%======================================
+\thereferences
+% You can change 
+%    the filename and location of the files inputted
+\bibliography{references}
+%======================================
+
+%======================================
+%  Appendix
+%======================================
+% You can change 
+%    the filename and location of the files inputted
+\chapterappendix{contents/appendix/appendix}
+%======================================
+
+\end{document}

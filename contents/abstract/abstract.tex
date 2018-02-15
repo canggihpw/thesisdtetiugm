@@ -1,0 +1,10 @@
+Servomotor uses feedback controller to control the speed or the position, or both. Typically, the PID controller is used and has evolved into more recent approaches like the hybrid with fuzzy logic controller (FLC) or neural network (NN). Many tuning methods for PID controller have been developed, and one of them is based on natural evolution, the genetic algorithm (GA). The significant drawback of GA is that the optimization process needs too many iterations and too long duration. In this thesis, a new optimization GA-based algorithm that emanates from modification of conventional GA to reduce the iterations number and the duration time, namely, semi-parallel operation genetic algorithm (SPOGA) is proposed. The aim of the algorithm is to improve a controller performance when used for a DC servomotor application.
+
+
+The servomotor's transfer function is obtained via system identification and is modelled using MATLAB commands. The model is used in the simulation of speed and position control and the performance of relevant conventional, fuzzy, and hybrid controllers are compared for various predefined conditions. The best controller is then selected to be optimized using SPOGA. Next, the performance comparison of GA and SPOGA is conducted based on the maximum value of parallel functions obtained. The SPOGA is then used to optimize the selected controllers and the performance comparisons of the controllers were conducted. 
+
+
+Detailed performance comparisons of controllers for a DC servomotor speed and position control under seven predefined conditions is presented. As compared to conventional GA, SPOGA performs better in reducing the number of test runs with the same results. The findings demonstrate the effectiveness of the hybrid-fuzzy controller for speed and position control of a DC servomotor, and confirm the ability of SPOGA as an optimization algorithm for the hybrid-fuzzy controller.
+
+
+\noindent\textbf{Keywords} :control, fuzzy, genetic algorithms, servomotor
