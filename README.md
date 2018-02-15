@@ -3,11 +3,11 @@
 # How-to-use 
 Read the detailed information in **thesis_template.tex**
 
-## The package contains:
-### Main files
+## Content:
+### Main files:
  *  thesisdtetiugm.cls (Class file)
  *  thesis_template.tex (The template file)
-### Content directory. 
+### Content directory:
 This directory and the subdirectories are not compulsory. I arranged in such a way to make it easier in writing.
  * contents/
 	 * nomenclature/
@@ -32,11 +32,11 @@ This directory and the subdirectories are not compulsory. I arranged in such a w
 		 * chapter-5.tex
 	 * appendix/
 		 * appendix.tex
-## Sample directory.
+## Sample directory:
 Only used for template sample.
 *  logougm.png
 *  sample_code.m
-## Additional files
+## Additional files:
 * references.bib (Bibtex file)
 * thesis_template_bahasa.pdf (PDF result in indonesian)
 * thesis_template_english.pdf (PDF result in english)
