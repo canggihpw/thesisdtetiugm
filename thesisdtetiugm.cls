@@ -40,7 +40,7 @@
 %======================================
 %% Option Execution
 %======================================
-\ExecuteOptions{indonesia} % set default language
+\ExecuteOptions{bahasa} % set default language
 \ProcessOptions
 
 
