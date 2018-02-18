@@ -1,0 +1,208 @@
+%%
+%% This is file `ragged2e.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ragged2e.dtx  (with options: `package')
+%% 
+%% Copyright (C) [1996..1999] by Martin Schroeder. All rights reserved.
+%% 
+%% This file is part of the Ragged2e package
+%% -----------------------------------------
+%% 
+%% This program may be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License, either version 1.0 of this
+%% license, or (at your option) any later version.
+%% The latest version of this license is in
+%%    CTAN:macros/latex/base/lppl.txt.
+%% 
+%% Happy users are requested to send me a postcard. :-)
+%% 
+%% The Ragged2e package contains these files:
+%% 
+%%                         Martin Schr"oder
+%%                         Cr"usemannallee 3
+%%                         D-28213 Bremen
+%%                         Martin.Schroeder@ACM.org
+%% 
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{ragged2e}
+         [1999/06/08 v1.02 Ragged2e Package (MS)]
+%% \CharacterTable
+%% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%  Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%  Digits        \0\1\2\3\4\5\6\7\8\9
+%%  Exclamation   \!     Double quote  \"     Hash (number) \#
+%%  Dollar        \$     Percent       \%     Ampersand     \&
+%%  Acute accent  \'     Left paren    \(     Right paren   \)
+%%  Asterisk      \*     Plus          \+     Comma         \,
+%%  Minus         \-     Point         \.     Solidus       \/
+%%  Colon         \:     Semicolon     \;     Less than     \<
+%%  Equals        \=     Greater than  \>     Question mark \?
+%%  Commercial at \@     Left bracket  \[     Backslash     \\
+%%  Right bracket \]     Circumflex    \^     Underscore    \_
+%%  Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%  Right brace   \}     Tilde         \~}
+%%
+%% \iffalse meta-comment
+%% ===================================================================
+%%  @LaTeX-style-file{
+%%     author          = {Martin Schr\"oder},
+%%     version         = "1.02",
+%%     date            = "8 June 1999",
+%%     filename        = "ragged2e.sty",
+%%     address         = {Martin Schr\"oder
+%%                        Cr\"usemannallee 3
+%%                        D-28213 Bremen
+%%     telephone       = "+49-421-2239425",
+%%     email           = "Martin.Schroeder@ACM.org",
+%%     pgp-Key         = "2048 bit / KeyID 292814E5",
+%%     pgp-fingerprint = "7E86 6EC8 97FA 2995 82C3  FEA5 2719 090E",
+%%     docstring       = "LaTeX package which defines new commands
+%%                        \Centering, \RaggedLeft, and \RaggedRight
+%%                        and new environments Center, FlushLeft, and
+%%                        FlushRight, which set ragged text and are
+%%                        easily configurable to allow hyphenation.
+%%                        Uses the everysel package.
+%%                       "
+%%  }
+%% ===================================================================
+%% \fi
+\newif\if@raggedtwoe@originalcommands
+\newif\if@raggedtwoe@originalparameters
+\DeclareOption{OriginalCommands}{\@raggedtwoe@originalcommandstrue}
+\DeclareOption{NewCommands}{\@raggedtwoe@originalcommandsfalse}
+\DeclareOption{OriginalParameters}{\@raggedtwoe@originalparameterstrue}
+\DeclareOption{NewParameters}{\@raggedtwoe@originalparametersfalse}
+\ExecuteOptions{OriginalCommands,NewParameters}
+\ProcessOptions\relax
+\RequirePackage{everysel}
+\newlength{\CenteringLeftskip}
+\newlength{\RaggedLeftLeftskip}
+\newlength{\RaggedRightLeftskip}
+\newlength{\CenteringRightskip}
+\newlength{\RaggedLeftRightskip}
+\newlength{\RaggedRightRightskip}
+\newlength{\CenteringParfillskip}
+\newlength{\RaggedLeftParfillskip}
+\newlength{\RaggedRightParfillskip}
+\newlength{\CenteringParindent}
+\newlength{\RaggedLeftParindent}
+\newlength{\RaggedRightParindent}
+\newlength{\RaggedSpaceskip}
+\newlength{\RaggedXSpaceskip}
+\if@raggedtwoe@originalparameters
+   \setlength{\CenteringLeftskip}      {\z@ plus \@ne fil}
+   \setlength{\RaggedLeftLeftskip}     {\z@ plus \@ne fil}
+   \setlength{\RaggedRightLeftskip}    {\z@skip}
+   \setlength{\CenteringRightskip}     {\z@ plus \@ne fil}
+   \setlength{\RaggedLeftRightskip}    {\z@skip}
+   \setlength{\RaggedRightRightskip}   {\z@ plus \@ne fil}
+   \setlength{\CenteringParfillskip}   {\z@skip}
+   \setlength{\RaggedLeftParfillskip}  {\z@skip}
+   \setlength{\RaggedRightParfillskip} {\z@ plus \@ne fil}
+   \setlength{\CenteringParindent}     {\z@}
+   \setlength{\RaggedLeftParindent}    {\z@}
+   \setlength{\RaggedRightParindent}   {\z@}
+   \setlength{\RaggedSpaceskip}        {\z@}
+   \setlength{\RaggedXSpaceskip}       {\z@}
+\else
+   \setlength{\CenteringLeftskip}      {\z@ plus \tw@ em}
+   \setlength{\RaggedLeftLeftskip}     {\z@ plus \tw@ em}
+   \setlength{\RaggedRightLeftskip}    {\z@skip}
+   \setlength{\CenteringRightskip}     {\z@ plus \tw@ em}
+   \setlength{\RaggedLeftRightskip}    {\z@skip}
+   \setlength{\RaggedRightRightskip}   {\z@ plus \tw@ em}
+   \setlength{\CenteringParfillskip}   {\z@skip}
+   \setlength{\RaggedLeftParfillskip}  {\z@skip}
+   \setlength{\RaggedRightParfillskip} {\z@ plus \@ne fil}
+   \setlength{\CenteringParindent}     {\z@}
+   \setlength{\RaggedLeftParindent}    {\z@}
+   \setlength{\RaggedRightParindent}   {\z@}
+   \setlength{\RaggedSpaceskip}        {.3333em}
+   \setlength{\RaggedXSpaceskip}       {.5em}
+\fi
+\newif\if@raggedtwoe@spaceskip
+\newcommand{\@raggedtwoe@everyselectfont}{%
+   \if@raggedtwoe@spaceskip
+      \ifdim\fontdimen\thr@@\font=\z@\relax
+         \setlength{\spaceskip}  {\fontdimen\tw@\font}%
+         \setlength{\xspaceskip} {\z@}%
+      \else
+         \setlength{\spaceskip}  {\RaggedSpaceskip}%
+         \setlength{\xspaceskip} {\RaggedXSpaceskip}%
+      \fi
+   \fi
+   }
+\EverySelectfont{\@raggedtwoe@everyselectfont}
+\let\@raggedtwoe@savedcr\\
+\newcommand{\Centering}{%
+   \ifx\\\@raggedtwoe@savedcr
+      \let\\\@centercr
+   \fi
+   \setlength{\leftskip}   {\CenteringLeftskip}%
+   \setlength{\@rightskip} {\CenteringRightskip}%
+   \setlength{\rightskip}  {\@rightskip}%
+   \setlength{\parfillskip}{\CenteringParfillskip}%
+   \setlength{\parindent}  {\CenteringParindent}%
+   \@raggedtwoe@spaceskiptrue
+   }
+\newcommand{\RaggedLeft}{%
+   \ifx\\\@raggedtwoe@savedcr
+      \let\\\@centercr
+   \fi
+   \setlength{\leftskip}   {\RaggedLeftLeftskip}%
+   \setlength{\@rightskip} {\RaggedLeftRightskip}%
+   \setlength{\rightskip}  {\@rightskip}%
+   \setlength{\parfillskip}{\RaggedLeftParfillskip}%
+   \setlength{\parindent}  {\RaggedLeftParindent}%
+   \@raggedtwoe@spaceskiptrue
+   }
+\newcommand{\RaggedRight}{%
+   \ifx\\\@raggedtwoe@savedcr
+      \let\\\@centercr
+   \fi
+   \setlength{\leftskip}   {\RaggedRightLeftskip}%
+   \setlength{\@rightskip} {\RaggedRightRightskip}%
+   \setlength{\rightskip}  {\@rightskip}%
+   \setlength{\parfillskip}{\RaggedRightParfillskip}%
+   \setlength{\parindent}  {\RaggedRightParindent}%
+   \@raggedtwoe@spaceskiptrue
+   }
+\newenvironment{Center}{%
+   \begin{trivlist}%
+      \Centering\item\relax
+      }{%
+      \end{trivlist}%
+      }
+\newenvironment{FlushLeft}{%
+   \begin{trivlist}%
+      \RaggedRight\item\relax
+      }{%
+      \end{trivlist}%
+      }
+\newenvironment{FlushRight}{%
+   \begin{trivlist}%
+      \RaggedLeft\item\relax
+      }{%
+      \end{trivlist}%
+      }
+\if@raggedtwoe@originalcommands
+\else
+   \let\LaTeXcentering\centering
+   \let\LaTeXraggedleft\raggedleft
+   \let\LaTeXraggedright\raggedright
+   \let\LaTeXcenter\center
+   \let\LaTeXflushleft\flushleft
+   \let\LaTeXflushright\flushright
+   \let\centering\Centering
+   \let\raggedleft\RaggedLeft
+   \let\raggedright\RaggedRight
+   \let\begincenter\beginCenter
+   \let\beginflushleft\beginFlushleft
+   \let\beginflushright\beginFlushRight
+\fi
+\endinput
+%%
+%% End of file `ragged2e.sty'.
