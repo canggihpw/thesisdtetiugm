@@ -38,6 +38,7 @@ Only used for template sample.
 *  logougm.png
 *  sample_code.m
 ## Additional files:
+* packages/ (Additional sty files for helping beginner users)
 * references.bib (Bibtex file)
 * thesis_template_bahasa.pdf (PDF result in indonesian)
 * thesis_template_english.pdf (PDF result in english)
