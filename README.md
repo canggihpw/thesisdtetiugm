@@ -4,6 +4,9 @@
 Read the detailed information in **thesis_template.tex**.
 In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully this will help beginner users.
 
+## Download
+[Download the latest version here](https://github.com/canggihpw/thesisdtetiugm/releases)
+
 ## Content:
 ### Main files
 ```
