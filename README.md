@@ -14,7 +14,7 @@ In case some **sty files** are not available in your TeX installation, just copy
 This directory and the subdirectories are not compulsory. I arranged in such a way to make it easier in writing.
 ```
 |-- contents/
-	|-- nomenclature/
+    |-- nomenclature/
     	|-- nomenclature.tex
     |-- statement/
     	|-- statement.tex
