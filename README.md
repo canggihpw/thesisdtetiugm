@@ -44,8 +44,6 @@ This directory and the subdirectories are not compulsory. I arranged in such a w
 ```
 |-- packages/ (Additional sty files for helping beginner users)
 |-- references.bib (Bibtex file)
-|-- thesis_template_bahasa.pdf (PDF result in indonesian)
-|-- thesis_template_english.pdf (PDF result in english)
 ```
 ### Sample directory
 Only used for template sample.
