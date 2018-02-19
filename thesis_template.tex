@@ -10,32 +10,39 @@
 
 %% Use option "bahasa" or "english" 
 %%    to change the basic language used
-\documentclass[bahasa]{thesisdtetiugm}
-
-% Only for writing dummy
-% You can remove this line 
-\usepackage{kantlipsum}
-
+%% User option "bachelor", "master", or "doctoral"
+%% 	  to change the degree
+% \documentclass[<bachelor/master/doctoral>,<bahasa/english>]{thesisdtetiugm}
+\documentclass[doctoral,english]{thesisdtetiugm}
 %======================================
 % Information Input
 %======================================
 % Input author's name and ID number
-\author{Canggih Puspo Wibowo}{<<NIM>>}
+\author{<<AUTHOR>>}{<<NIM>>}
 % Input the thesis' title
 \title{<<Thesis title>>}
-
 % Program and the head of the program
 \program{<<Program name>>}{<<Program coordinator>>}{<<NIP>>}
 % Name of department head and NIP
-\departmenhead{<<Head of the department>>}{<<NIP>>}
+\departmenthead{<<Head of the department>>}{<<NIP>>}
 \major{<<Major>>}
 \yearsubmit{<<year submit>>}
 \examdate{<<Exam date>>}
-% Name of exam committees
-\committee{<<Examiner 1>>}{<<Examiner 2>>}
-% Name of thesis supervisors
-\firstsupervisor{<<Supervisor 1>>}
-\secondsupervisor{<<Supervisor 2>>}
+% Name of thesis supervisors/promotors
+\addsupervisor{<<Supervisor 1>>}{<<NIP>>}
+\addsupervisor{<<Supervisor 2>>}{<<NIP>>}
+\addsupervisor{<<Supervisor 3>>}{<<NIP>>}
+% Name of examiners
+\addexaminer{<<Examiner 1>>}{<<NIP 1>>}
+\addexaminer{<<Examiner 2>>}{<<NIP 2>>}
+\addexaminer{<<Examiner 3>>}{<<NIP 3>>}
+\addexaminer{<<Examiner 4>>}{<<NIP 4>>}
+\addexaminer{<<Examiner 5>>}{<<NIP 5>>}
+\addexaminer{<<Examiner 6>>}{<<NIP 6>>}
+\addexaminer{<<Examiner 7>>}{<<NIP 7>>}
+\addexaminer{<<Examiner 8>>}{<<NIP 8>>}
+\addexaminer{<<Examiner 9>>}{<<NIP 9>>}
+
 %======================================
 
 % correct bad hyphenation here [example]
@@ -46,7 +53,8 @@
 % Create cover etc
 %======================================
 \printcover{sample/logougm.png}
-\printapproval
+\printendorsement
+\chapterdedication{contents/dedication/dedication}
 \chapterstatement{contents/statement/statement}
 \chapterpreface{contents/preface/preface}
 \chapternomenclature{contents/nomenclature/nomenclature}

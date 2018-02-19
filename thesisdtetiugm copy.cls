@@ -32,23 +32,15 @@
 %% Option Declaration
 %======================================
 \newtoggle{lang}
-\newtoggle{bachelor}
-\newtoggle{master}
-\newtoggle{doctoral}
-% Language
 \DeclareOption{bahasa}{\toggletrue{lang}}
 \DeclareOption{english}{\togglefalse{lang}}
-% Degree
-\DeclareOption{bachelor}{\toggletrue{bachelor} \togglefalse{master} \togglefalse{doctoral}}
-\DeclareOption{master}{\togglefalse{bachelor} \toggletrue{master} \togglefalse{doctoral}}
-\DeclareOption{doctoral}{\togglefalse{bachelor} \togglefalse{master} \toggletrue{doctoral}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}  % pass any unknown option to the report class
 
 
 %======================================
 %% Option Execution
 %======================================
-\ExecuteOptions{bachelor,bahasa} % set default degree and language
+\ExecuteOptions{bahasa} % set default language
 \ProcessOptions
 
 
@@ -70,9 +62,6 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{url}
-\usepackage{ifthen}
-\usepackage{forloop}
-\usepackage{longtable}
 \bibliographystyle{IEEEtran}
 
 
@@ -84,9 +73,8 @@
 	\newcommand{\listappendixname}{DAFTAR LAMPIRAN}%
 	\newcommand{\nomenclaturename}{ARTI LAMBANG DAN SINGKATAN}%
 	\newcommand{\acknowledgmentname}{HALAMAN PERSEMBAHAN}%
-	\newcommand{\approvalpage}{HALAMAN PENGESAHAN}
+	\newcommand{\approvalname}{HALAMAN PENGESAHAN}
 	\newcommand{\statementname}{PERNYATAAN}
-	\newcommand{\dedicationpage}{HALAMAN PERSEMBAHAN}
 	\AtBeginDocument{% select the language
 		\selectlanguage{bahasa}
 	}
@@ -94,9 +82,8 @@
 	% define new commands in english
 	\newcommand{\listappendixname}{LIST OF APPENDICES}%
 	\newcommand{\nomenclaturename}{NOMENCLATURE AND ABBREVIATION}%
-	\newcommand{\approvalpage}{ENDORSEMENT PAGE}
+	\newcommand{\approvalname}{APPROVAL}
 	\newcommand{\statementname}{STATEMENT}
-	\newcommand{\dedicationpage}{PAGE OF DEDICATION}
 	\AtBeginDocument{% select the language
 		\selectlanguage{english}
 	}
@@ -176,37 +163,17 @@
 \newcommand*{\examdate}[1]{\newcommand{\@examdate}{#1}}
 \newcommand*{\approvaldate}[1]{\newcommand{\@approvaldate}{#1}}
 \newcommand*{\yearsubmit}[1]{\newcommand{\@yearsubmit}{#1}}
-% Using array-like to dynamically store examiner & supervisor data
-% First option keeps ID, second option keeps name(1) or nip(2)
-% Examiners
-\newcounter{exm}
-\newcommand\addexaminer[2]{%
-	\stepcounter{exm}%
-	\csdef{exmname\theexm}{#1}
-	\csdef{exmnip\theexm}{#2}
+\newcommand*{\committee}[2]{
+	\newcommand{\@firstcommittee}{#1}
+	\newcommand{\@secondcommittee}{#2}	
 }
-\newcommand\getexaminer[2]{%
-	% if second option = 1, get name
-	% if second option = 2, get nip
-	\ifthenelse{\equal{\detokenize{#2}}{\detokenize{1}}}
-	{\csuse{exmname#1}}
-	{\csuse{exmnip#1}}
+% Supervisors info
+\newcommand*{\firstsupervisor}[1]{
+	\newcommand{\@firstsupervisorName}{#1}
 }
-% Supervisors/Promotors info
-\newcounter{spv}
-\newcommand\addsupervisor[2]{%
-	\stepcounter{spv}%
-	\csdef{spvname\thespv}{#1}
-	\csdef{spvnip\thespv}{#2}
+\newcommand*{\secondsupervisor}[1]{
+	\newcommand{\@secondsupervisorName}{#1}
 }
-\newcommand\getsupervisor[2]{%
-	% if second option = 1, get name
-	% if second option = 2, get nip
-	\ifthenelse{\equal{\detokenize{#2}}{\detokenize{1}}}
-	{\csuse{spvname#1}}
-	{\csuse{spvnip#1}}
-}
-
 % Department info
 \newcommand{\@university}{Universitas Gadjah Mada}
 \newcommand{\@facultyIna}{Fakultas Teknik}
@@ -216,7 +183,7 @@
 \newcommand{\@graduateIna}{Program Pascarjana}
 \newcommand{\@graduateEng}{Graduate Program}
 \newcommand*{\major}[1]{\newcommand{\@major}{#1}}
-\newcommand*{\departmenthead}[2]{
+\newcommand*{\departmenhead}[2]{
 	\newcommand{\@depheadName}{#1}
 	\newcommand{\@depheadNIP}{#2}
 }
@@ -226,335 +193,115 @@
 %======================================
 %% Cover Page
 %======================================
-% If Bachelor
-\iftoggle{bachelor}{
-	\newcommand{\printcover}[1]{
-		\newgeometry{top=4cm,bottom=3cm,left=3.2cm,right=2.2cm}
-		\thispagestyle{empty}
-		\setcounter{page}{1}
-		\pagenumbering{roman}
-		\begin{center}
-			\begin{singlespacing}
-				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{SKRIPSI}{THESIS}}\\
-				\vfill
-				\includegraphics[width=0.5\textwidth]{#1}
-				\vfill
-				\iftoggle{lang}{Disusun oleh:}{Written by:}\\
-				\vspace{0.4em}
-				\textbf{\@authorName \\ \@authorID \\}
-				\vfill
-				\textbf{
-					\iftoggle{lang}
-					{\MakeUppercase{Program Studi \@program}}
-					{\MakeUppercase{\@program \vspace{1em} Program}}\\
-					\iftoggle{lang}{\MakeUppercase{\@departmentIna}}{\MakeUppercase{\@departmentEng}} \\
-					\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}}
-					\MakeUppercase{\@university} \\ 
-					\MakeUppercase{\@city} \\ 
-					\@yearsubmit	
-				}
-			\end{singlespacing}
-		\end{center}
-	}
-}
-
-% If Master
-\iftoggle{master}{
-	\newcommand{\printcover}[1]{
-		\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
-		\thispagestyle{empty}%
-		\setcounter{page}{1}
-		\pagenumbering{roman}
-		\begin{center}
-			\begin{singlespacing}
-				\MakeUppercase{\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{Tesis}{Thesis}}\\
-				\vspace{1cm}
-				\iftoggle{lang}
-					{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
-					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
-				\vspace{12pt}
-				\iftoggle{lang}
-					{Program Studi \@program} 
-					{\@program \vspace{1em} Program}\\
-				\@major \\
-				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
-				\vspace{1cm}
-				\vfill
-				\includegraphics[width=0.5\textwidth]{#1}
-				\vfill
-				\iftoggle{lang}
-					{diajukan oleh}
-					{proposed by}\\\vspace{0.4em}
-				\textbf{\@authorName \\ \@authorID \\}
-				\vspace{1cm}
-				\vfill
-				\iftoggle{lang}{Kepada}{To}\\
-				\vspace{0.4em}
-				\textbf{
-					\iftoggle{lang}{\MakeUppercase{\@graduateIna}}{\MakeUppercase{\@graduateEng}} \\ 
-					\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}} \\ 
-					\MakeUppercase{\@university} \\ 
-					\MakeUppercase{\@city} \\ 
-					\@yearsubmit	
-				}
-			\end{singlespacing}
-		\end{center}
-	}
-}
-
-% If Doctoral
-\iftoggle{doctoral}{
-	\newcommand{\printcover}[1]{
-		\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
-		\thispagestyle{empty}%
-		\setcounter{page}{1}
-		\pagenumbering{roman}
-		\begin{center}
-			\begin{singlespacing}
-				\MakeUppercase{\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1.5cm}
-				\iftoggle{lang}
-					{Bidang Studi \@program} 
-					{\@program \vspace{1em} Program}\\
-				\vfill
-				\includegraphics[width=0.5\textwidth]{#1}
-				\vfill
-				\iftoggle{lang}
-					{diajukan oleh}
-					{proposed by}\\\vspace{0.4em}
-				\textbf{\@authorName \\ \@authorID \\}
-				\vfill
-				\iftoggle{lang}{Kepada}{To}\\
-				\vspace{0.4em}
-				\textbf{
-					\iftoggle{lang}{\MakeUppercase{\@graduateIna}}{\MakeUppercase{\@graduateEng}} \\ 
-					\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}} \\ 
-					\MakeUppercase{\@university} \\ 
-					\MakeUppercase{\@city} \\ 
-					\@yearsubmit	
-				}
-			\end{singlespacing}
-		\end{center}
-	}
+\newcommand{\printcover}[1]{
+	\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
+	\thispagestyle{empty}%
+	\setcounter{page}{1}
+	\pagenumbering{roman}
+	\begin{center}
+		\begin{singlespacing}
+			\MakeUppercase{\fontsize{14pt}{16pt}\selectfont\@title}\\
+			\vspace{1.5cm}
+			\textbf{\iftoggle{lang}{Tesis}{Thesis}}\\
+			\vspace{1cm}
+			\iftoggle{lang}
+				{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
+				{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
+			\vspace{12pt}
+			\iftoggle{lang}
+				{Program Studi \@program} 
+				{\@program \vspace{1em} Program}\\
+			\@major \\
+			\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
+			\vspace{1cm}
+			\vfill
+			\includegraphics[width=0.5\textwidth]{#1}
+			\vfill
+			\iftoggle{lang}
+				{diajukan oleh}
+				{proposed by}\\\vspace{0.4em}
+			\textbf{\@authorName \\ \@authorID \\}
+			\vspace{1cm}
+			\vfill
+			\iftoggle{lang}{Kepada}{To}\\
+			\vspace{0.4em}
+			\textbf{
+				\iftoggle{lang}{\MakeUppercase{\@graduateIna}}{\MakeUppercase{\@graduateEng}} \\ 
+				\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}} \\ 
+				\MakeUppercase{\@university} \\ 
+				\MakeUppercase{\@city} \\ 
+				\@yearsubmit	
+			}
+		\end{singlespacing}
+	\end{center}
 }
 
 %======================================
-%% Endorsement Page
+%% Approval Page
 %======================================
-% If Bachelor
-\iftoggle{bachelor}{
-	\newcommand{\printendorsement}{
-		\chapter*{\approvalpage}
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\begin{center}
-			\begin{singlespacing}
-				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1cm}
-				\textbf{\iftoggle{lang}{SKRIPSI}{THESIS}}\\
-				\vspace{2cm}
-				\iftoggle{lang}
-					{Diajukan Sebagai Salah Satu Syarat untuk Memperoleh}
-					{Proposed as A Requirement to Obtain}\\
-				\iftoggle{lang}
-					{Gelar Sarjana Teknik Program S-1}
-					{Undergraduate Degree (\textit{Sarjana Teknik})}\\
-				\iftoggle{lang}
-					{pada \@departmentIna}
-					{in \@departmentEng}\\
-				\iftoggle{lang}{\@facultyIna}{\@facultyEng}\\
-				\@university\\
-				\vfill
-				\iftoggle{lang}{Disusun oleh:}{Written by:}\\
-				\vspace{1em}
-				\textbf{\underline{\@authorName} \\ \@authorID \\}
-				\vfill
-				\iftoggle{lang}
-					{Telah disetujui dan disahkan}
-					{Has been approved and endorsed}\\
-				\vspace{0.5cm}
-				\iftoggle{lang}{Pada tanggal $\ldots\ldots$}{on $\ldots\ldots$}\\
-				\vfill
-				\begin{center}
-					\begin{tabular}{ccc}
-						\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Pembimbing II}{Supervisor II} \\
-						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
-						\textbf{\underline{\getsupervisor{1}{1}}}& &
-						\textbf{\underline{\getsupervisor{2}{1}}} \\
-						\textbf{\getsupervisor{1}{2}} & & \textbf{\getsupervisor{2}{2}}\\
-					\end{tabular}
-				\end{center}
-			\end{singlespacing}
-		\end{center}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-	}
-}
-
-% If Master
-\iftoggle{master}{
-	\newcommand{\printendorsement}{
-	%	\chapter*{\endorsementname}%
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\begin{center}
-			\begin{singlespacing}
-				\textbf{\iftoggle{lang}{TESIS}{THESIS}}\\
-				\vspace{1em}
-				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1cm}
-				\iftoggle{lang}{Dipersiapkan dan disusun oleh}{Written by}\\
-				\vspace{1em}
-				\textbf{\underline{\@authorName} \\ \@authorID \\}
-				\vspace{1em}
-				\iftoggle{lang}
-					{Telah dipertahankan di depan dewan penguji}
-					{Has been presented} \\
-				\iftoggle{lang}
-					{Pada tanggal: \@examdate} 
-					{on \@examdate}\\
-				\iftoggle{lang}
-					{\textbf{Susunan Dewan Penguji}}
-					{\textbf{Thesis Examiners}}\\
-				
-				\begin{center}
-					\begin{tabular}{ccc}
-						\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
-						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
-						\textbf{\underline{\getsupervisor{1}{1}}}& &
-						\textbf{\underline{\getexaminer{1}{1}}} \\
-						\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
-						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
-						\textbf{\underline{\getsupervisor{2}{1}}}& &
-						\textbf{\underline{\getexaminer{2}{1}}} \\
-					\end{tabular}
-				\end{center}
-				\vspace{0.5cm}
-				
-				\iftoggle{lang}
-					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
-					{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
-				\vspace{0.5cm}
-				
-				\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
-				\iftoggle{lang}
-					{Pengelola Program Studi \@program} 
-					{Program Coordinator of \@program}\\
-				\vspace{1.5cm}
-				\textbf{\underline{\@programcoorName}}\\
-				NIP. \@programcoorNIP \\
-				\vspace{1cm}
-				
-				\iftoggle{lang}{Mengetahui,\\}{} 
-				\iftoggle{lang}
-					{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
-					 {Head of Department}\\
-				\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
-				\vspace{1.5cm}
-				\textbf{\underline{\@depheadName}}\\
-				NIP. \@depheadNIP \\
-				
-			\end{singlespacing}			
-		\end{center}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-	}
-}
-
-% If Doctoral
-\iftoggle{doctoral}{
-	\newcommand{\printendorsement}{
-		\chapter*{\approvalpage}
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\begin{center}
-			\begin{singlespacing}
-				\raggedright \hspace{2cm}Tim Promotor menyetujui laporan disertasi: \\
-				\begin{center}
-					\begin{tabular}{lcl}
-						Nama & : & \@authorName \\
-						NIM & : & \@authorID \\
-						Judul & : & \@title \\
-					\end{tabular}
-				\end{center}
-				\raggedright \hspace{2cm} yang telah diperbaiki sesuai saran dari Tim Penguji Ujian Tertutup \\
-				\vspace{1cm}
-				\begin{center}
-					\begin{tabular}{ccc}
-						Tanda Tangan & \hspace{3cm} & Tanggal\\
-						\vspace{0.6cm} & \vspace{0.6cm} & \vspace{0.6cm}\\
-						\textbf{\underline{\getsupervisor{1}{1}}}& &
-						\ldots\ldots\ldots \\
-						(Promotor) & & \\
-						
-						\vspace{0.6cm} & \vspace{0.6cm} & \vspace{0.6cm}\\
-						\textbf{\underline{\getsupervisor{2}{1}}}& &
-						\ldots\ldots\ldots \\
-						(Ko-promotor) & & \\
-						
-						\vspace{0.6cm} & \vspace{0.6cm} & \vspace{0.6cm}\\
-						\textbf{\underline{\getsupervisor{3}{1}}}& &
-						\ldots\ldots\ldots \\
-						(Ko-promotor) & & \\
-					\end{tabular}
-				\end{center}
-
-			\end{singlespacing}			
-		\end{center}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\newpage
-		\chapter*{\approvalpage}
-		\begin{center}
-			\begin{singlespacing}
-					\raggedright \hspace{2cm}Tim Penguji menyetujui laporan disertasi: \\
-					\begin{center}
-						\begin{tabular}{lcl}
-							Nama & : & \@authorName \\
-							NIM & : & \@authorID \\
-							Judul & : & \@title \\
-						\end{tabular}
-					\end{center}
-					\raggedright \hspace{2cm} yang telah diperbaiki sesuai saran dari Tim Penguji Ujian Tertutup \\
-					\vspace{1cm}
-					\begin{center}
-						\begin{longtable}{ccc}
-							Tanda Tangan & \hspace{3cm} & Tanggal\\
-							% Iterate through the list of examiners
-							% get number of examiners from \value{exm}
-							\newcounter{end}
-							\forloop{end}{1}{\theend < \numexpr\value{exm}+1}{
-								\vspace{0.6cm} & \vspace{0.6cm} & \vspace{0.6cm}\\
-								\textbf{\underline{\getexaminer{\theend}{1}}} & &
-								\ldots\ldots\ldots \\
-								\ifthenelse{\theend = 1}{(Ketua Tim Penguji)}{(Anggota Tim Penguji)} & & \\
-								\ifthenelse{\theend = 4} %newpage after the 4th item
-								{
-									\hspace{2cm}\\
-									\pagebreak
-									Tanda Tangan & \hspace{3cm} & Tanggal\\
-								}{}
-							}
-							
-						\end{longtable}
-					\end{center}
-					
-				\end{singlespacing}			
+\newcommand{\printapproval}{
+%	\chapter*{\approvalname}%
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\begin{center}
+		\begin{singlespacing}
+			\textbf{\iftoggle{lang}{TESIS}{THESIS}}\\
+			\vspace{1em}
+			\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
+			\vspace{1cm}
+			\iftoggle{lang}{Dipersiapkan dan disusun oleh}{Written by}\\
+			\vspace{1em}
+			\textbf{\underline{\@authorName} \\ \@authorID \\}
+			\vspace{1em}
+			\iftoggle{lang}
+				{Telah dipertahankan di depan dewan penguji}
+				{Has been presented} \\
+			\iftoggle{lang}
+				{Pada tanggal: \@examdate} 
+				{on \@examdate}\\
+			\iftoggle{lang}
+				{\textbf{Susunan Dewan Penguji}}
+				{\textbf{Thesis Committee}}\\
+			
+			\begin{center}
+				\begin{tabular}{ccc}
+					\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Committee} \\
+					\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					\textbf{\underline{\@firstsupervisorName}}& &
+					\textbf{\underline{\@firstcommittee}} \\
+					\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
+					\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					\textbf{\underline{\@secondsupervisorName}}& &
+					\textbf{\underline{\@secondcommittee}} \\
+				\end{tabular}
 			\end{center}
-	}
-}
-
-
-
-%======================================
-%% Dedication Page
-%======================================
-\newcommand{\chapterdedication}[1]{
-	\newgeometry{right=3cm,left=3cm,top=3cm,bottom=3cm}
-	\chapter*{\dedicationpage}%
-	\input{#1}
-	\addcontentsline{toc}{chapter}{\dedicationpage}
+			\vspace{0.5cm}
+			
+			\iftoggle{lang}
+				{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
+				{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
+			\vspace{0.5cm}
+			
+			\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
+			\iftoggle{lang}
+				{Pengelola Program Studi \@program} 
+				{Program Coordinator of \@program}\\
+			\vspace{1.5cm}
+			\textbf{\underline{\@programcoorName}}\\
+			NIP. \@programcoorNIP \\
+			\vspace{1cm}
+			
+			\iftoggle{lang}{Mengetahui,\\}{} 
+			\iftoggle{lang}
+				{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
+				 {Head of Department}\\
+			\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
+			\vspace{1.5cm}
+			\textbf{\underline{\@depheadName}}\\
+			NIP. \@depheadNIP \\
+			
+		\end{singlespacing}			
+	\end{center}
 }
 
 %======================================
