@@ -1,4 +1,4 @@
-# Latex Template for Master Thesis at DTETI UGM
+# Latex Template for Thesis at DTETI UGM
 
 ## How-to-use 
 Read the detailed information in **thesis_template.tex**.
