@@ -1,5 +1,74 @@
-\chapter{<<Chapter name>>}
+\chapter{Blok beda halaman}
 
-\section{<<Section name>>}
+\section{Membuat algoritma terpisah}
+
+Untuk membuat algoritma terpisah seperti pada contoh berikut, kita dapat memanfaatkan perintah \textit{algstore} dan \textit{algrestore} yang terdapat pada paket \textit{algcompatible}. Pada dasarnya, kita membuat dua blok algoritma dimana blok pertama kita simpan menggunakan \textit{algstore} dan kemudian di-restore menggunakan \textit{algrestore} pada algoritma kedua. Perintah tersebut dimaksudkan agar terdapat kesinamungan antara kedua blok yang sejatinya adalah satu blok. 
+
+\begin{algorithm}                     
+	\caption{Contoh algorima}          
+	\label{findme}                          
+	\begin{algorithmic} [1]                   
+		\Procedure{CreateSet}{$v$}
+		\State Create new set containing $v$
+		\EndProcedure
+		\algstore{myalg}
+	\end{algorithmic}
+\end{algorithm}
+
+Pada blok algoritma kedua, tidak perlu ditambahkan caption dan label, karena sudah menjadi satu bagian dalam blok pertama. Pembagian algoritma menjadi dua bagian ini berguna jika kita ingin menjelaskan bagian-bagian dari sebuah algoritma, maupun untuk memisah algoritma panjang dalam beberapa halaman.
+
+\begin{algorithm}                     
+	\begin{algorithmic} [1]                   
+		\algrestore{myalg}
+		\Procedure{ConcatSet}{$v$}
+		\State Create new set containing $v$
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 
 
+\section{Membuat tabel terpisah}
+
+Untuk membuat tabel panjang yang melebihi satu halaman, kita dapat mengganti kombinasi \textit{table + tabular} menjadi \textit{longtable} dengan contoh sebagai berikut.
+
+\begin{longtable}{| c | c |} 
+	\caption{Contoh tabel panjang}
+	\label{tab:myfirstlongtable} \\
+	\hline
+	header 1 & header 2 \\
+	\hline \hline
+	foo & bar \\ \hline 
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+	foo & bar \\ \hline
+\end{longtable}
+
+
+\section{Menulis formula terpisah halaman}
+
+Terkadang kita butuh untuk menuliskan rangkaian formula dalam jumlah besar sehingga melewati batas satu halaman. Solusi yang digunakan bisa saja dengan memindahkan satu blok formula tersebut pada halaman yang baru atau memisah rangkaian formula menjadi dua bagian untuk masing-masing halaman. Cara yang pertama mungkin akan menghasilkan alur yang berbeda karena ruang kosong pada halaman pertama akan diisi oleh teks selanjutnya. Sehingga di sini kita dapat memanfaatkan \textit{align} yang sudah diatur dengan mode \textit{allowdisplaybreaks}. Penggunakan \textit{align} ini memungkinkan satu rangkaian formula terpisah berbeda halaman. 
+
+Contoh sederhana dapat digambarkan sebagai berikut.
+
+\begin{align*}
+x &= y^2\\
+x &= y^3\\
+a + b &= c\\
+x &= y - 2\\
+a + b &= d + e \tag{\stepcounter{equation}\theequation}\\
+x^2 + 3 &= y\\
+a(x) &= 2x\\
+b_i &= 5x\\
+10x^2 &= 9x\\
+2x^2 + 3x + 2 &= 0\\
+5x - 2 &= 0\\
+d &= \log x\\
+y &= \sin x
+\end{align*}

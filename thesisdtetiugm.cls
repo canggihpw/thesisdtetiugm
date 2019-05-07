@@ -57,7 +57,7 @@
 %======================================
 \LoadClass[12pt]{report}  % this class is based on the report class
 \usepackage{geometry}% easy layouting
-\usepackage{hyperref}% hyperlink
+%\usepackage{hyperref}% hyperlink
 \usepackage{tocloft}% edit font toc
 \usepackage{fancyhdr}% page number
 \usepackage[cmex10]{amsmath}
@@ -66,6 +66,7 @@
 \usepackage{titlesec}
 \usepackage{ragged2e}% text alignment
 \usepackage{algorithm}
+\usepackage{algcompatible}
 \usepackage{algpseudocode}
 \usepackage{listings}
 \usepackage{color}
@@ -73,8 +74,11 @@
 \usepackage{ifthen}
 \usepackage{forloop}
 \usepackage{longtable}
+\usepackage{enumitem}
 \bibliographystyle{IEEEtran}
 
+% Page break for equation
+\allowdisplaybreaks
 
 %======================================
 %% Localise the Strings
@@ -609,13 +613,17 @@
 %% List of Figures and Tables
 %======================================
 \setcounter{tocdepth}{3}
+% dot length
+\renewcommand{\cftdotsep}{1} %default: 4.5
 % Put dots for chapter entries
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 % set font chapter
 \renewcommand\cftchapfont{\mdseries}
 \renewcommand\cftchappagefont{\mdseries}%
 
+
 % Modified list entries in TOC, LOT, LOF
+\setlength{\cftbeforechapskip}{0em} % no space between list
 \renewcommand{\cftchappresnum}{\chaptername \space}
 \renewcommand\cfttabpresnum{\tablename \space}
 \renewcommand\cftfigpresnum{\figurename \space}
@@ -624,6 +632,7 @@
 	\addtolength\cfttabnumwidth{\widthof{\bfseries \tablename }}
 	\addtolength\cftfignumwidth{\widthof{\bfseries \figurename }}
 }
+
 
 % Adding entry to TOC
 \newcommand{\thetoc}{
@@ -785,3 +794,8 @@
 	\onehalfspacing
 	\input{#1}
 }
+
+%----------------
+% List
+%---------------
+\setlist[enumerate]{topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex}
