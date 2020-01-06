@@ -217,7 +217,7 @@
 \newcommand{\@facultyEng}{Faculty of Engineering}
 \newcommand{\@departmentIna}{Departemen Teknik Elektro dan Teknologi Informasi}
 \newcommand{\@departmentEng}{Department of Electrical Engineering and Information Technology}
-\newcommand{\@graduateIna}{Program Pascarjana}
+\newcommand{\@graduateIna}{Program Pascasarjana}
 \newcommand{\@graduateEng}{Graduate Program}
 \newcommand*{\major}[1]{\newcommand{\@major}{#1}}
 \newcommand*{\departmenthead}[2]{
