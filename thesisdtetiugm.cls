@@ -89,7 +89,7 @@
 	\newcommand{\nomenclaturename}{ARTI LAMBANG DAN SINGKATAN}%
 	\newcommand{\acknowledgmentname}{HALAMAN PERSEMBAHAN}%
 	\newcommand{\approvalpage}{HALAMAN PENGESAHAN}
-	\newcommand{\statementname}{PERNYATAAN}
+	\newcommand{\statementname}{PERNYATAAN BEBAS PLAGIASI}
 	\newcommand{\dedicationpage}{HALAMAN PERSEMBAHAN}
 	\AtBeginDocument{% select the language
 		\selectlanguage{bahasa}
@@ -409,7 +409,7 @@
 				\textbf{\iftoggle{lang}{TESIS}{THESIS}}\\
 				\vspace{1em}
 				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1cm}
+				\vspace{0.5cm}
 				\iftoggle{lang}{Dipersiapkan dan disusun oleh}{Written by}\\
 				\vspace{1em}
 				\textbf{\underline{\@authorName} \\ \@authorID \\}
@@ -420,6 +420,7 @@
 				\iftoggle{lang}
 					{Pada tanggal: \@examdate} 
 					{on \@examdate}\\
+				\vspace{1em}
 				\iftoggle{lang}
 					{\textbf{Susunan Dewan Penguji}}
 					{\textbf{Thesis Examiners}}\\
@@ -441,23 +442,23 @@
 				\iftoggle{lang}
 					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
 					{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
-				\vspace{0.5cm}
+				\vspace{0.3cm}
 				
 				\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
 				\iftoggle{lang}
 					{Pengelola Program Studi \@program} 
 					{Program Coordinator of \@program}\\
-				\vspace{1.5cm}
+				\vspace{1.3cm}
 				\textbf{\underline{\@programcoorName}}\\
 				NIP. \@programcoorNIP \\
-				\vspace{1cm}
+				\vspace{0.5cm}
 				
 				\iftoggle{lang}{Mengetahui,\\}{} 
 				\iftoggle{lang}
 					{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
 					 {Head of Department}\\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
-				\vspace{1.5cm}
+				\vspace{1.3cm}
 				\textbf{\underline{\@depheadName}}\\
 				NIP. \@depheadNIP \\
 				
@@ -549,7 +550,20 @@
 	}
 }
 
-
+%======================================
+%% Scanned Endorsement Page
+%======================================
+\newcommand{\printScannedEndorsement}[1]{
+	\newpage
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\begin{center}
+	\vspace*{-3cm}
+	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	\end{center}
+	\addcontentsline{toc}{chapter}{\approvalpage}
+	\clearpage
+}
 
 %======================================
 %% Dedication Page
@@ -569,6 +583,21 @@
 	\chapter*{\statementname}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\statementname}
+}
+
+%======================================
+%% Scanned Statement Page
+%======================================
+\newcommand{\chapterScannedStatement}[1]{
+	\newpage
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\begin{center}
+	\vspace*{-3cm}
+	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	\end{center}
+	\addcontentsline{toc}{chapter}{\statementname}
+	\clearpage
 }
 
 %======================================
