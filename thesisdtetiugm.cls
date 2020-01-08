@@ -75,6 +75,7 @@
 \usepackage{forloop}
 \usepackage{longtable}
 \usepackage{enumitem}
+\usepackage[labelsep=period]{caption} % use period as label separator
 \bibliographystyle{IEEEtran}
 
 % Page break for equation
@@ -558,7 +559,7 @@
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}
 	\begin{center}
-	\vspace*{-3cm}
+	\vspace*{-4cm}
 	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
 	\end{center}
 	\addcontentsline{toc}{chapter}{\approvalpage}
@@ -593,7 +594,7 @@
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}
 	\begin{center}
-	\vspace*{-3cm}
+	\vspace*{-4cm}
 	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
 	\end{center}
 	\addcontentsline{toc}{chapter}{\statementname}
