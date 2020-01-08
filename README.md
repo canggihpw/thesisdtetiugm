@@ -51,6 +51,8 @@ Only used for template sample.
 |-- sample/
     |-- logougm.png
     |-- sample_code.m
+    |-- scanned-endorsement.jpg
+    |-- scanned-statement.jpg
 ```
 
 ## License
