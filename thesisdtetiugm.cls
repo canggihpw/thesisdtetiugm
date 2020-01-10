@@ -233,7 +233,7 @@
 %======================================
 % If Bachelor
 \iftoggle{bachelor}{
-	\newcommand{\printcover}[1]{
+	\newcommand{\printcover}[2]{
 		\newgeometry{top=4cm,bottom=3cm,left=3.2cm,right=2.2cm}
 		\thispagestyle{empty}
 		\setcounter{page}{1}
@@ -242,7 +242,7 @@
 			\begin{singlespacing}
 				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
 				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{SKRIPSI}{THESIS}}\\
+				\textbf{#2}\\
 				\vfill
 				\includegraphics[width=0.5\textwidth]{#1}
 				\vfill
@@ -267,7 +267,7 @@
 
 % If Master
 \iftoggle{master}{
-	\newcommand{\printcover}[1]{
+	\newcommand{\printcover}[2]{
 		\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
 		\thispagestyle{empty}%
 		\setcounter{page}{1}
@@ -276,7 +276,7 @@
 			\begin{singlespacing}
 				\MakeUppercase{\fontsize{14pt}{16pt}\selectfont\@title}\\
 				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{Tesis}{Thesis}}\\
+				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
 					{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
