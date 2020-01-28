@@ -25,6 +25,7 @@
 \RequirePackage[T1]{fontenc}% quotation
 \RequirePackage{graphicx}
 \RequirePackage{calc}%Simple arithmetic lib
+\RequirePackage{pdfpages} %include pdf file in latex
 
 
 
@@ -351,6 +352,13 @@
 %======================================
 % If Bachelor
 \iftoggle{bachelor}{
+	\newcommand{\printendorsementpdf}{
+		%\chapter*{\approvalpage}
+		\addtocounter{page}{1}
+		\addcontentsline{toc}{chapter}{\approvalpage}
+		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\addtocounter{page}{-1}
+	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
@@ -400,6 +408,13 @@
 
 % If Master
 \iftoggle{master}{
+	\newcommand{\printendorsementpdf}{
+		%\chapter*{\approvalpage}
+		\addtocounter{page}{1}
+		\addcontentsline{toc}{chapter}{\approvalpage}
+		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\addtocounter{page}{-1}
+	}
 	\newcommand{\printendorsement}{
 	%	\chapter*{\endorsementname}%
 		\fancyhf{}
@@ -469,6 +484,13 @@
 
 % If Doctoral
 \iftoggle{doctoral}{
+	\newcommand{\printendorsementpdf}{
+		%\chapter*{\approvalpage}
+		\addtocounter{page}{1}
+		\addcontentsline{toc}{chapter}{\approvalpage}
+		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\addtocounter{page}{-1}
+	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
