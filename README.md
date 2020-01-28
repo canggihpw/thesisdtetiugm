@@ -3,6 +3,9 @@
 ## Info
 This template can be used for bachelor, master, and doctoral thesis at DTETI UGM, even though for the last one, it still can be considered as a "beta" release. Send me email or create pull-request if you have improvements for this template.
 
+## What's new
+[2020-01-28] You can use command **\printendorsementpdf** to include your own pdf file containing the endorsement. Otherwise, use **\printendorsement**
+
 ## How-to-use 
 Read the detailed information in **thesis_template.tex**.
 In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully this will help beginner users.
@@ -21,6 +24,8 @@ This directory and the subdirectories are not compulsory. I arranged in such a w
     	|-- nomenclature.tex
     |-- statement/
     	|-- statement.tex
+    |-- endorsement/
+    	|-- endorsement.pdf
     |-- preface/
     	|-- preface.tex
     |-- abstract/
