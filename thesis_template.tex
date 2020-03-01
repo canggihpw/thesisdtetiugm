@@ -45,17 +45,25 @@
 
 %======================================
 
-% correct bad hyphenation here [example]
+%% Uncomment block of code below to disable hyphenation
+%\tolerance=1
+%\emergencystretch=\maxdimen
+%\hyphenpenalty=10000
+%\hbadness=10000
+
+% Correct bad hyphenation here [example]
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 \begin{document}
 %======================================
 % Create cover etc
 %======================================
-\printcover{sample/logougm.png}
+\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*} % *choose one
 \printendorsement
+%\printScannedEndorsement{sample/scanned-endorsement.jpg}  %Comment out \printendorsement first before uncomment this
 \chapterdedication{contents/dedication/dedication}
 \chapterstatement{contents/statement/statement}
+%\chapterScannedStatement{sample/scanned-statement.jpg}  %Comment out \chapterstatement first before uncomment this
 \chapterpreface{contents/preface/preface}
 \chapternomenclature{contents/nomenclature/nomenclature}
 \chapterabstract{contents/abstract/abstract}

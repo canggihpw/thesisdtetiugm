@@ -1,11 +1,11 @@
 # Latex Template for Thesis Writing at DTETI UGM
 
+## Info
+This template can be used for bachelor, master, and doctoral thesis at DTETI UGM, even though for the last one, it still can be considered as a "beta" release. Send me email or create pull-request if you have improvements for this template.
+
 ## How-to-use 
 Read the detailed information in **thesis_template.tex**.
 In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully this will help beginner users.
-
-## Download
-[Download the latest stable version here](https://github.com/canggihpw/thesisdtetiugm/releases)
 
 ## Content:
 ### Main files
@@ -51,6 +51,8 @@ Only used for template sample.
 |-- sample/
     |-- logougm.png
     |-- sample_code.m
+    |-- scanned-endorsement.jpg
+    |-- scanned-statement.jpg
 ```
 
 ## License
