@@ -574,15 +574,15 @@
 }
 
 %======================================
-%% Scanned Endorsement Page
+%% Scanned JPG Endorsement Page
 %======================================
-\newcommand{\printScannedEndorsement}[1]{
+\newcommand{\printendorsementjpg}[1]{
 	\newpage
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}
 	\begin{center}
 	\vspace*{-4cm}
-	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
 	\end{center}
 	\addcontentsline{toc}{chapter}{\approvalpage}
 	\clearpage
@@ -609,9 +609,9 @@
 }
 
 %======================================
-%% Scanned Statement Page
+%% Scanned JPG Statement Page
 %======================================
-\newcommand{\chapterScannedStatement}[1]{
+\newcommand{\chapterstatementjpg}[1]{
 	\newpage
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}

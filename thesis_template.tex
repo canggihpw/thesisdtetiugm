@@ -58,22 +58,46 @@
 %======================================
 % Create cover etc
 %======================================
-\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*} % *Choose one
-%---
-% Select endorsement page type. If want to use your own PDF file, use \printendorsementpdf, or if you want to use JPG file, use \printendorsementjpg, otherwise \printendorsement
+
+%---- COVER ----
+\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
+% *Choose one
+
+%---- ENDORSEMENT PAGE ----
+% Select endorsement page type. If you want to use your own PDF file,  
+% 	use \printendorsementpdf, or if you want to use JPG file, use 
+% 	\printendorsementjpg. Otherwise, use \printendorsement.
+% 	Choose one only. Comment out unused command(s).
 %
 \printendorsement
 %\printendorsementpdf
 %\printendorsementjpg{sample/scanned-endorsement.jpg}
-%----
+
+%---- DEDICATION PAGE ----
 \chapterdedication{contents/dedication/dedication}
+
+%---- STATEMENT PAGE ----
+% Select statement page type. If you want to use your own JPG file,  
+%	use \chapterstatementjpg{<your *.jpg file path>}. Otherwise, 
+%	use \chapterstatement{contents/statement/statement}.
+%	Choose one only. Comment out unused command(s).
+%
 \chapterstatement{contents/statement/statement}
-%\chapterScannedStatement{sample/scanned-statement.jpg}  %Comment out \chapterstatement first before uncomment this
+%\chapterstatementjpg{sample/scanned-statement.jpg}
+
+%---- PREFACE PAGE ----
 \chapterpreface{contents/preface/preface}
+
+%---- NOMENCLATURE PAGE ----
 \chapternomenclature{contents/nomenclature/nomenclature}
+
+%---- ABSTRACT PAGE----
 \chapterabstract{contents/abstract/abstract}
+
+%---- INTISARI PAGE----
 \chapterintisari{contents/abstract/intisari}
 %======================================
+
 
 %======================================
 % Create Table of Contents, List of Figures, List of Tables
