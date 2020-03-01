@@ -58,9 +58,14 @@
 %======================================
 % Create cover etc
 %======================================
-\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*} % *choose one
+\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*} % *Choose one
+%---
+% Select endorsement page type. If want to use your own PDF file, use \printendorsementpdf, or if you want to use JPG file, use \printendorsementjpg, otherwise \printendorsement
+%
 \printendorsement
-%\printScannedEndorsement{sample/scanned-endorsement.jpg}  %Comment out \printendorsement first before uncomment this
+%\printendorsementpdf
+%\printendorsementjpg{sample/scanned-endorsement.jpg}
+%----
 \chapterdedication{contents/dedication/dedication}
 \chapterstatement{contents/statement/statement}
 %\chapterScannedStatement{sample/scanned-statement.jpg}  %Comment out \chapterstatement first before uncomment this
