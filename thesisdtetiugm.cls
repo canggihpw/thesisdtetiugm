@@ -59,6 +59,7 @@
 \LoadClass[12pt]{report}  % this class is based on the report class
 \usepackage{geometry}% easy layouting
 %\usepackage{hyperref}% hyperlink
+\usepackage{subcaption} % subfigure
 \usepackage{tocloft}% edit font toc
 \usepackage{fancyhdr}% page number
 \usepackage[cmex10]{amsmath}
@@ -76,6 +77,11 @@
 \usepackage{forloop}
 \usepackage{longtable}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
 \bibliographystyle{IEEEtran}
 
 % Page break for equation
@@ -314,7 +320,8 @@
 % If Doctoral
 \iftoggle{doctoral}{
 	\newcommand{\printcover}[1]{
-		\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
+		\newgeometry{left=3.5cm,top=2.5cm,bottom=2.5cm,right=2.5cm}
+		\titleformat*{\section}{\centering\normalfont\normalsize\bfseries}
 		\thispagestyle{empty}%
 		\setcounter{page}{1}
 		\pagenumbering{roman}
