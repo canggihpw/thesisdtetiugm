@@ -77,6 +77,7 @@
 \usepackage{forloop}
 \usepackage{longtable}
 \usepackage{enumitem}
+\usepackage[labelsep=period]{caption} % use period as label separator
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
@@ -96,7 +97,7 @@
 	\newcommand{\nomenclaturename}{ARTI LAMBANG DAN SINGKATAN}%
 	\newcommand{\acknowledgmentname}{HALAMAN PERSEMBAHAN}%
 	\newcommand{\approvalpage}{HALAMAN PENGESAHAN}
-	\newcommand{\statementname}{PERNYATAAN}
+	\newcommand{\statementname}{PERNYATAAN BEBAS PLAGIASI}
 	\newcommand{\dedicationpage}{HALAMAN PERSEMBAHAN}
 	\AtBeginDocument{% select the language
 		\selectlanguage{bahasa}
@@ -239,7 +240,7 @@
 %======================================
 % If Bachelor
 \iftoggle{bachelor}{
-	\newcommand{\printcover}[1]{
+	\newcommand{\printcover}[2]{
 		\newgeometry{top=4cm,bottom=3cm,left=3.2cm,right=2.2cm}
 		\thispagestyle{empty}
 		\setcounter{page}{1}
@@ -248,7 +249,7 @@
 			\begin{singlespacing}
 				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
 				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{SKRIPSI}{THESIS}}\\
+				\textbf{#2}\\
 				\vfill
 				\includegraphics[width=0.5\textwidth]{#1}
 				\vfill
@@ -273,7 +274,7 @@
 
 % If Master
 \iftoggle{master}{
-	\newcommand{\printcover}[1]{
+	\newcommand{\printcover}[2]{
 		\newgeometry{left=3cm,top=3cm,bottom=3cm,right=3cm}
 		\thispagestyle{empty}%
 		\setcounter{page}{1}
@@ -282,7 +283,7 @@
 			\begin{singlespacing}
 				\MakeUppercase{\fontsize{14pt}{16pt}\selectfont\@title}\\
 				\vspace{1.5cm}
-				\textbf{\iftoggle{lang}{Tesis}{Thesis}}\\
+				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
 					{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
@@ -431,7 +432,7 @@
 				\textbf{\iftoggle{lang}{TESIS}{THESIS}}\\
 				\vspace{1em}
 				\MakeUppercase{\bfseries\fontsize{14pt}{16pt}\selectfont\@title}\\
-				\vspace{1cm}
+				\vspace{0.5cm}
 				\iftoggle{lang}{Dipersiapkan dan disusun oleh}{Written by}\\
 				\vspace{1em}
 				\textbf{\underline{\@authorName} \\ \@authorID \\}
@@ -442,6 +443,7 @@
 				\iftoggle{lang}
 					{Pada tanggal: \@examdate} 
 					{on \@examdate}\\
+				\vspace{1em}
 				\iftoggle{lang}
 					{\textbf{Susunan Dewan Penguji}}
 					{\textbf{Thesis Examiners}}\\
@@ -463,23 +465,23 @@
 				\iftoggle{lang}
 					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
 					{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
-				\vspace{0.5cm}
+				\vspace{0.3cm}
 				
 				\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
 				\iftoggle{lang}
 					{Pengelola Program Studi \@program} 
 					{Program Coordinator of \@program}\\
-				\vspace{1.5cm}
+				\vspace{1.3cm}
 				\textbf{\underline{\@programcoorName}}\\
 				NIP. \@programcoorNIP \\
-				\vspace{1cm}
+				\vspace{0.5cm}
 				
 				\iftoggle{lang}{Mengetahui,\\}{} 
 				\iftoggle{lang}
 					{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
 					 {Head of Department}\\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
-				\vspace{1.5cm}
+				\vspace{1.3cm}
 				\textbf{\underline{\@depheadName}}\\
 				NIP. \@depheadNIP \\
 				
@@ -578,7 +580,20 @@
 	}
 }
 
-
+%======================================
+%% Scanned JPG Endorsement Page
+%======================================
+\newcommand{\printendorsementjpg}[1]{
+	\newpage
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\begin{center}
+	\vspace*{-4cm}
+	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\end{center}
+	\addcontentsline{toc}{chapter}{\approvalpage}
+	\clearpage
+}
 
 %======================================
 %% Dedication Page
@@ -598,6 +613,21 @@
 	\chapter*{\statementname}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\statementname}
+}
+
+%======================================
+%% Scanned JPG Statement Page
+%======================================
+\newcommand{\chapterstatementjpg}[1]{
+	\newpage
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\begin{center}
+	\vspace*{-4cm}
+	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	\end{center}
+	\addcontentsline{toc}{chapter}{\statementname}
+	\clearpage
 }
 
 %======================================
