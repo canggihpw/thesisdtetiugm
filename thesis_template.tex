@@ -47,23 +47,56 @@
 
 % correct bad hyphenation here [example]
 % \babelhyphenation[<<english/bahasa>>]{op-tical net-works semi-conduc-tor}
+%% Uncomment block of code below to disable hyphenation
+%\tolerance=1
+%\emergencystretch=\maxdimen
+%\hyphenpenalty=10000
+%\hbadness=10000
 
 \begin{document}
 %======================================
 % Create cover etc
 %======================================
-\printcover{sample/logougm.png}
-%---
-% If using your own endorsement page in pdf file, use \printendorsementpdf, otherwise \printendorsement
-\printendorsementpdf
-%----
+
+%---- COVER ----
+\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
+% *Choose one
+
+%---- ENDORSEMENT PAGE ----
+% Select endorsement page type. If you want to use your own PDF file,  
+% 	use \printendorsementpdf, or if you want to use JPG file, use 
+% 	\printendorsementjpg. Otherwise, use \printendorsement.
+% 	Choose one only. Comment out unused command(s).
+%
+\printendorsement
+%\printendorsementpdf
+%\printendorsementjpg{sample/scanned-endorsement.jpg}
+
+%---- DEDICATION PAGE ----
 \chapterdedication{contents/dedication/dedication}
+
+%---- STATEMENT PAGE ----
+% Select statement page type. If you want to use your own JPG file,  
+%	use \chapterstatementjpg{<your *.jpg file path>}. Otherwise, 
+%	use \chapterstatement{contents/statement/statement}.
+%	Choose one only. Comment out unused command(s).
+%
 \chapterstatement{contents/statement/statement}
+%\chapterstatementjpg{sample/scanned-statement.jpg}
+
+%---- PREFACE PAGE ----
 \chapterpreface{contents/preface/preface}
+
+%---- NOMENCLATURE PAGE ----
 \chapternomenclature{contents/nomenclature/nomenclature}
+
+%---- ABSTRACT PAGE----
 \chapterabstract{contents/abstract/abstract}
+
+%---- INTISARI PAGE----
 \chapterintisari{contents/abstract/intisari}
 %======================================
+
 
 %======================================
 % Create Table of Contents, List of Figures, List of Tables
