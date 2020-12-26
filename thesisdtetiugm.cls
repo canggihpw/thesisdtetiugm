@@ -78,6 +78,8 @@
 \usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows}
@@ -164,7 +166,7 @@
 \setlength{\parskip}{6pt}
 \setlength{\footskip}{1.5cm} 
 \setlength{\topskip}{1ex}
-
+\pgfplotsset{compat=1.16}
 
 %======================================
 %%  Information Setup
