@@ -51,7 +51,7 @@ Contains `references.bib` as your centralized `bibTeX` file and `IEEEtran.bst` a
 Your program codes stored here. Using some more tweaking, a python code can be run from inside LaTeX and the output will be embedded inside output pdf.
 
 ### Equations
-Centralized compile-able equations. You can compile the equations only pdf here, or call it from your `contents/*.tex` file.
+Centralized compile-able equations. You can compile the equations only pdf here, or call it from your `contents/*.tex` file. To make a separated compiled equations, run `contents/equations-wrapper.tex`.
 
 ### Images
 Your images database sit here.
