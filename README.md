@@ -35,7 +35,6 @@ This directory and the subdirectories are not compulsory. I arranged in such a w
     	|-- chapter-1.tex
     |-- chapter-2/
     	|-- chapter-2.tex
-        |-- sample-fig.png
     |-- chapter-3/
     	|-- chapter-3.tex
     |-- chapter-4/
@@ -45,19 +44,21 @@ This directory and the subdirectories are not compulsory. I arranged in such a w
     |-- appendix/
     	|-- appendix.tex
 ```
+### Bibex
+Contains `references.bib` as your centralized `bibTeX` file and `IEEEtran.bst` as bibTeX formatter following IEEE Transactions format.
+
+### Codes
+Your program codes stored here. Using some more tweaking, a python code can be run from inside LaTeX and the output will be embedded inside output pdf.
+
+### Equations
+Centralized compile-able equations. You can compile the equations only pdf here, or call it from your `contents/*.tex` file.
+
+### Images
+Your images database sit here.
+
 ### Additional files
 ```
 |-- packages/ (Additional sty files for helping beginner users)
-|-- references.bib (Bibtex file)
-```
-### Sample directory
-Only used for template sample.
-```
-|-- sample/
-    |-- logougm.png
-    |-- sample_code.m
-    |-- scanned-endorsement.jpg
-    |-- scanned-statement.jpg
 ```
 
 ## License
