@@ -1,0 +1,26 @@
+\documentclass{article}
+
+%-------------------------------------------------------------------------------
+% Escape command
+\newcommand{\EQUATION}[0]{}
+\newcommand{\ENDEQUATION}[0]{}
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+\EQUATION miqp-obj
+\begin{equation}
+  \label{eq:miqp-obj}
+  \min_{\mathbf{x}}C = \frac{1}{2} \mathbf{x}^{T}Q\mathbf{x}+\mathbf{c}^{T}\mathbf{x} 
+\end{equation}
+\ENDEQUATION
+
+
+\EQUATION miqp-cons
+\begin{equation}
+  \label{eq:miqp-cons}
+  A\mathbf{x} \preceq \mathbf{b},
+\end{equation}
+\ENDEQUATION
+
+\end{document}
