@@ -17,15 +17,15 @@
 %======================================
 %% Initial Code
 %======================================
-\RequirePackage[english,bahasa]{babel} % language
+\RequirePackage[english,bahasa]{babel}% language
 \RequirePackage{etoolbox}% conditional statement
 \RequirePackage{indentfirst}
 \RequirePackage{setspace}
 \RequirePackage{times}% font
 \RequirePackage[T1]{fontenc}% quotation
 \RequirePackage{graphicx}
-\RequirePackage{calc}%Simple arithmetic lib
-\RequirePackage{pdfpages} %include pdf file in latex
+\RequirePackage{calc}% Simple arithmetic lib
+\RequirePackage{pdfpages}% include pdf file in latex
 
 
 
@@ -85,7 +85,6 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes}
-\bibliographystyle{IEEEtran}
 
 % Page break for equation
 \allowdisplaybreaks
@@ -856,7 +855,28 @@
 	\input{#1}
 }
 
-%----------------
-% List
-%---------------
+%======================================
+%% List
+%======================================
 \setlist[enumerate]{topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex}
+
+%======================================
+%% New command to cite equation
+%% 	- equation should be started with \EQUATION <<EQUATION NAME>>
+%% 	- equation should be ended with \ENDEQUATION
+%%	- cite equation using \inputeq{<<PATH_TO_EQUATION_TEX>>}{<<EQUATION NAME>>}
+%======================================
+\newcommand{\inputeq}[2]{% #1 = file, #2 = eq name
+	\long\def\EQUATION ##1#2 {}%
+	\input{#1}
+}
+\let\ENDEQUATION\endinput
+
+%======================================
+%% Disable hyphenation unless urgent or writen manually 
+%======================================
+\pretolerance=10000
+\tolerance=9000
+\emergencystretch=0pt
+\hyphenpenalty=10000
+\hbadness=10000
