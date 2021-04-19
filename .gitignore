@@ -20,3 +20,6 @@
 
 # used package
 *.sty
+
+# exclude package in packages/
+!packages/*
