@@ -856,7 +856,19 @@
 	\input{#1}
 }
 
-%----------------
-% List
-%---------------
+%======================================
+%% List
+%======================================
 \setlist[enumerate]{topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex}
+
+%======================================
+%% New command to cite equation
+%% 	- equation should be started with \EQUATION <<EQUATION NAME>>
+%% 	- equation should be ended with \ENDEQUATION
+%%	- cite equation using \inputeq{<<PATH_TO_EQUATION_TEX>>}{<<EQUATION NAME>>}
+%======================================
+\newcommand{\inputeq}[2]{% #1 = file, #2 = eq name
+	\long\def\EQUATION ##1#2 {}%
+	\input{#1}
+}
+\let\ENDEQUATION\endinput
