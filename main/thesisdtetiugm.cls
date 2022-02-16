@@ -27,8 +27,6 @@
 \RequirePackage{calc}% Simple arithmetic lib
 \RequirePackage{pdfpages}% include pdf file in latex
 
-
-
 %======================================
 %% Option Declaration
 %======================================
@@ -45,28 +43,25 @@
 \DeclareOption{doctoral}{\togglefalse{bachelor} \togglefalse{master} \toggletrue{doctoral}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}  % pass any unknown option to the report class
 
-
 %======================================
 %% Option Execution
 %======================================
 \ExecuteOptions{bachelor,bahasa} % set default degree and language
 \ProcessOptions
 
-
 %======================================
 %% Class & Package Loading
 %======================================
 \LoadClass[12pt]{report}  % this class is based on the report class
-\usepackage{geometry}% easy layouting
-%\usepackage{hyperref}% hyperlink
+\usepackage{geometry} % easy layouting
 \usepackage{subcaption} % subfigure
-\usepackage{tocloft}% edit font toc
-\usepackage{fancyhdr}% page number
+\usepackage{tocloft} % edit font toc
+\usepackage{fancyhdr} % page number
 \usepackage[cmex10]{amsmath}
 \usepackage{cite}
 \usepackage{multirow}
 \usepackage{titlesec}
-\usepackage{ragged2e}% text alignment
+\usepackage{ragged2e} % text alignment
 \usepackage{algorithm}
 \usepackage{algcompatible}
 \usepackage{algpseudocode}
@@ -81,6 +76,15 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
+\usepackage{ifthen}
+\usepackage{nomencl} % for nomenclature
+\usepackage{xcolor} % for coloring table
+
+% TODO: {minted} or {pythonhighlight} coloring
+% \usepackage{hyperref} % hyperlink
+% \usepackage{pythonhighlight} % derivative of listings for python hylighting
+% \usepackage{minted} % for code coloring
+
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows}
@@ -115,12 +119,15 @@
 	}
 }
 
+\renewcommand{\nomname}{\nomenclaturename}
+
 % redefine commands in babel bahasa
 \addto\captionsbahasa{%
 	\renewcommand{\prefacename}{PRAKATA}%
 	\renewcommand{\contentsname}{DAFTAR ISI}%
 	\renewcommand{\listfigurename}{DAFTAR GAMBAR}%
 	\renewcommand{\listtablename}{DAFTAR TABEL}%
+	\renewcommand{\lstlistlistingname}{DAFTAR \lstlistingname}% List of Listings -> List of Algorithms
 	\renewcommand{\abstractname}{Intisari}%
 	\renewcommand{\partname}{BAGIAN}%
 	\renewcommand{\chaptername}{BAB}%
@@ -130,6 +137,7 @@
 	\renewcommand{\indexname}{Indek}%
 	\renewcommand{\figurename}{Gambar}%
 	\renewcommand{\tablename}{Tabel}%
+	\renewcommand{\lstlistingname}{Kode}%
 	\renewcommand{\pagename}{Halaman}%
 }
 
@@ -139,6 +147,7 @@
 	\renewcommand{\contentsname}{CONTENTS}%
 	\renewcommand{\listfigurename}{LIST OF FIGURES}%
 	\renewcommand{\listtablename}{LIST OF TABLES}%
+	\renewcommand{\lstlistlistingname}{LIST OF CODES}%
 	\renewcommand{\abstractname}{\emph{Abstract}}%
 	\renewcommand{\partname}{PART}%
 	\renewcommand{\chaptername}{CHAPTER}%
@@ -148,6 +157,7 @@
 	\renewcommand{\indexname}{Index}%
 	\renewcommand{\figurename}{Figure}%
 	\renewcommand{\tablename}{Table}%
+	\renewcommand{\lstlistingname}{Code}%
 	\renewcommand{\pagename}{Page}%
 }
 
@@ -645,7 +655,7 @@
 %% Nomenclature
 %======================================
 \newcommand{\chapternomenclature}[1]{
-	\chapter*{\nomenclaturename}
+	% \chapter*{\nomenclaturename} % use this if not using nomencl
 	\input{#1}	
 	\addcontentsline{toc}{chapter}{\nomenclaturename}
 }
@@ -733,12 +743,29 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 
+% \makeatletter
+% {\small % Capture font definitions of \small
+% \xdef\f@size@small{\f@size}
+% \xdef\f@baselineskip@small{\f@baselineskip}
+% \tiny % Capture font definitions for \tiny
+% \xdef\f@size@tiny{\f@size}
+% \xdef\f@baselineskip@tiny{\f@baselineskip}
+% }
+% % Define new \smalltotiny font size
+% \newcommand{\costomfontsize}{%
+%   \fontsize
+%     {\fpeval{5}}
+%     {\fpeval{}%
+%   \selectfont
+% }
+
 \lstdefinestyle{mystyle}{ 
 	commentstyle=\color{codegreen},
 	keywordstyle=\color{magenta},
-	numberstyle=\tiny\color{codegray},
+	numberstyle=\footnotesize\color{codegray},
 	stringstyle=\color{codepurple},
-	basicstyle=\small,
+	basicstyle=\footnotesize,
+	% basicstyle=\linespread{0.1},
 	breakatwhitespace=false,         
 	breaklines=true,                 
 	captionpos=b,                    
@@ -775,11 +802,14 @@
 % set figure, table, and equation style
 \@addtoreset {equation}{chapter}
 \renewcommand\theequation
-{\ifnum \c@chapter>\z@ \@arabic\c@chapter-\fi \@arabic\c@equation}
+{\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@equation}
 \renewcommand \thefigure
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@figure}
 \renewcommand \thetable
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@table}
+
+% TODO: \thelstlisting
+\AtBeginDocument{\renewcommand*{\thelstlisting}{\ifnum \c@chapter>\z@ \@arabic\c@chapter-\fi \arabic{lstlisting}}}
 
 % Section style
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -861,7 +891,12 @@
 \setlist[enumerate]{topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex}
 
 %======================================
-%% New command to cite equation
+%% New command \ubar to make \bar but underline
+%=====================================
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+
+%======================================
+%% New command to cite equation and nomenclature
 %% 	- equation should be started with \EQUATION <<EQUATION NAME>>
 %% 	- equation should be ended with \ENDEQUATION
 %%	- cite equation using \inputeq{<<PATH_TO_EQUATION_TEX>>}{<<EQUATION NAME>>}
@@ -873,10 +908,28 @@
 \let\ENDEQUATION\endinput
 
 %======================================
-%% Disable hyphenation unless urgent or writen manually 
+%% Disable hyphenation unless urgent or writen manually
+%% Other commented parameters are optional
+%
+% This \tolerance=9000 and \emergencystretch=0pt allow already existing hypen
+% \tolerance=9000
+% \emergencystretch=0pt
 %======================================
-\pretolerance=10000
-\tolerance=9000
-\emergencystretch=0pt
 \hyphenpenalty=10000
 \hbadness=10000
+\tolerance=9000
+\emergencystretch=0pt
+
+% \tolerance=1
+% \emergencystretch=\maxdimen
+
+% \pretolerance=10000
+% \exhyphenpenalty=100
+
+% \righthyphenmin=62
+% \lefthyphenmin=62
+
+%======================================
+%% Single space after period 
+%======================================
+\frenchspacing % disable using \nonfrenchspacing or delete it altogehter
