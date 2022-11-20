@@ -17,9 +17,18 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.nlg
+*.nlo
+*.nls
 
 # used package
 *.sty
 
 # exclude package in packages/
 !packages/*
+
+# private folder to ignore in git
+private/
+
+# editor
+.vscode/
