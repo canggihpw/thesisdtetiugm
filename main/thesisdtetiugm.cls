@@ -80,6 +80,10 @@
 \usepackage{nomencl} % for nomenclature
 \usepackage{xcolor} % for coloring table
 
+\usepackage{siunitx} % for SI unit
+\usepackage{bm} % for bold math
+\usepackage{flafter} % make image appear only after referenced
+
 % TODO: {minted} or {pythonhighlight} coloring
 % \usepackage{hyperref} % hyperlink
 % \usepackage{pythonhighlight} % derivative of listings for python hylighting
@@ -93,6 +97,11 @@
 % Page break for equation
 \allowdisplaybreaks
 
+\usepackage{array}%support wrap inside table
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}% horizontal centering
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}% vertical centering
+
+\usepackage{tabularx}
 %======================================
 %% Localise the Strings
 %======================================
@@ -301,7 +310,7 @@
 					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
 				\vspace{12pt}
 				\iftoggle{lang}
-					{Program Studi \@program} 
+					{Program Studi \@program}
 					{\@program \vspace{1em} Program}\\
 				\@major \\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
@@ -460,6 +469,29 @@
 					{\textbf{Thesis Examiners}}\\
 				
 				\begin{center}
+					%% style1
+					% \begin{tabular*}{\textwidth}{cc}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}} & \textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} & \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}} & \textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabular*}
+
+					%% style2
+					% \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}Xc>{\centering\arraybackslash}X}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabularx}
+
+					%% style3
 					\begin{tabular}{ccc}
 						\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
 						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
@@ -470,6 +502,16 @@
 						\textbf{\underline{\getsupervisor{2}{1}}}& &
 						\textbf{\underline{\getexaminer{2}{1}}} \\
 					\end{tabular}
+
+					%% style4
+					% \begin{tabular}{c}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I}\\
+					% 	\vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}}\\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II}\\
+					% 	\vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}}\\
+					% \end{tabular}
 				\end{center}
 				\vspace{0.5cm}
 				
