@@ -380,11 +380,11 @@
 %======================================
 % If Bachelor
 \iftoggle{bachelor}{
-	\newcommand{\printendorsementpdf}{
+	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
 		\addtocounter{page}{1}
 		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\includepdf[page={1}]{#1}
 		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
@@ -436,11 +436,11 @@
 
 % If Master
 \iftoggle{master}{
-	\newcommand{\printendorsementpdf}{
+	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
 		\addtocounter{page}{1}
 		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\includepdf[page={1}]{#1}
 		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
@@ -546,11 +546,11 @@
 
 % If Doctoral
 \iftoggle{doctoral}{
-	\newcommand{\printendorsementpdf}{
+	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
 		\addtocounter{page}{1}
 		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
+		\includepdf[page={1}]{#1}
 		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
