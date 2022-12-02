@@ -71,6 +71,7 @@
 \usepackage{ifthen}
 \usepackage{forloop}
 \usepackage{longtable}
+\usepackage{tabulary} % support auto-wrap table
 \usepackage{enumitem}
 \usepackage[labelsep=period]{caption} % use period as label separator
 \usepackage{tikz}
@@ -82,6 +83,13 @@
 
 \usepackage{siunitx} % for SI unit
 \usepackage{bm} % for bold math
+\usepackage{float} % make image and table able to be together with text with force
+% Use [H] to make no text between the image and the text
+% Use [h] to softly placed the image and allow text between (recommended)
+% \begin{table}[h]
+% \begin{figure}[H]
+% another option is to use [tb]
+% [tb] means only on top or bottom of page, not in the midle of page
 \usepackage{flafter} % make image appear only after referenced
 
 % TODO: {minted} or {pythonhighlight} coloring

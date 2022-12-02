@@ -13,6 +13,7 @@
 %% User option "bachelor", "master", or "doctoral"
 %% 	  to change the degree
 
+%% TODO: \usepackage graphicx for relative path shortcut
 %\documentclass[<bachelor/master/doctoral>,<bahasa/english>]{thesisdtetiugm} 
 \documentclass[master,bahasa,table,xcdraw]{thesisdtetiugm} % <table> and <xcdraw> for coloring table
 
@@ -59,8 +60,15 @@
 \addexaminer{<<Examiner 9>>}{<<NIP 9>>}
 
 %======================================
+% Initialize nomenclature (using nomencl)
+%======================================
+%\makenomenclature
+%======================================
 
-% correct bad hyphenation here [example]
+%======================================
+% Correct bad hyphenation if needed
+%======================================
+% example correcting bad hyphenation (uncomment to use):
 % \babelhyphenation[<<english/bahasa>>]{op-tical net-works semi-conduc-tor}
 
 \begin{document}
@@ -68,9 +76,10 @@
 % Create cover etc
 %======================================
 
-%---- COVER ----
+%---- COVER ---- 
+% Choose one between Pendadaran/Tesis/Ringkasan Tesis*
+% I don't know why, but using Pra Pendadaran also possible
 \printcover{images/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
-% *Choose one
 
 %---- ENDORSEMENT PAGE ----
 % Select endorsement page type. If you want to use your own PDF file,  
