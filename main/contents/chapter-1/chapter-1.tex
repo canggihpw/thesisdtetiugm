@@ -21,7 +21,7 @@ Contoh gambar terlihat pada Gambar \ref{Fig: Contoh gambar}. Gambar diambil dari
 	\caption{tabel ini}
 	\vspace{0.5em}
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|l|r|r|}
 		\hline
 		ID & Tinggi Badan (cm) & Berat Badan (kg) \\
 		\hline \hline
@@ -31,7 +31,25 @@ Contoh gambar terlihat pada Gambar \ref{Fig: Contoh gambar}. Gambar diambil dari
 	\end{tabular}
 	\label{Tab: Tabel Tinggi Berat}
 \end{table}
+
 Contoh penulisan tabel bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat}.
+
+\begin{table}[h]
+	\caption{tabel ini}
+	\vspace{0.5em}
+	\centering
+	\begin{tabulary}{\linewidth}{|l|C|C|}
+		\hline
+		ID & Tinggi Badan Mahasiswa di Universitas Gadjah Mada (cm) & Berat Badan Mahasiswa di Universitas Gadjah Mada(kg) \\
+		\hline \hline
+		A23 &  \multicolumn{1}{r|}{173} &  \multicolumn{1}{r|}{62} \\
+		A25 &  \multicolumn{1}{r|}{185} &  \multicolumn{1}{r|}{78} \\
+		A10 &  \multicolumn{1}{r|}{162} &  \multicolumn{1}{r|}{70} \\ \hline
+	\end{tabulary}
+	\label{Tab: Tabel Tinggi Berat Kolom Panjang}
+\end{table}
+
+Contoh penulisan tabel dengan nama kolom sangat panjang denagn bantuan \textit{tabulary} bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat Kolom Panjang}.
 
 \section{Penulisan formula}
 Contoh penulisan formula
