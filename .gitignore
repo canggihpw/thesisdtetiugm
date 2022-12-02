@@ -20,6 +20,7 @@
 *.nlg
 *.nlo
 *.nls
+*.synctex(busy)
 
 # used package
 *.sty
