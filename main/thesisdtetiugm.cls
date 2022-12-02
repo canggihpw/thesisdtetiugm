@@ -306,11 +306,11 @@
 				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
-					{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
+					{untuk memenuhi bagian persyaratan \\ mencapai derajat Magister}
 					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
 				\vspace{12pt}
 				\iftoggle{lang}
-					{Program Studi \@program}
+					{Program \@program}
 					{\@program \vspace{1em} Program}\\
 				\@major \\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
