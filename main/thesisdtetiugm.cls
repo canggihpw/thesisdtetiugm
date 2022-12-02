@@ -522,7 +522,7 @@
 				
 				\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
 				\iftoggle{lang}
-					{Pengelola Program Studi \@program} 
+					{Pengelola Program \@program} 
 					{Program Coordinator of \@program}\\
 				\vspace{1.3cm}
 				\textbf{\underline{\@programcoorName}}\\
@@ -532,7 +532,7 @@
 				\iftoggle{lang}{Mengetahui,\\}{} 
 				\iftoggle{lang}
 					{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
-					 {Head of Department}\\
+					{Head of Department}\\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
 				\vspace{1.3cm}
 				\textbf{\underline{\@depheadName}}\\
