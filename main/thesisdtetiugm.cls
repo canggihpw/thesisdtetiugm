@@ -306,7 +306,7 @@
 				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
-					{untuk memenuhi bagian persyaratan \\ mencapai derajat Magister}
+					{untuk memenuhi sebagian persyaratan \\ mencapai derajat Magister}
 					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
 				\vspace{12pt}
 				\iftoggle{lang}
