@@ -8,9 +8,32 @@ This template can be used for a bachelor, master, and doctoral thesis at DTETI U
 
 [2020-01-28] You can use command **\printendorsementpdf** to include your pdf file containing the endorsement. Otherwise, use **\printendorsement**
 
+## Compiling PDF
+
+The most simple way to compile LaTeX is to use an online compiler such as [Overleaf](https://www.overleaf.com/). One beginner-friendly option for offline compilation is to use [MiKTeX](https://miktex.org/) with [TeXstudio](https://www.texstudio.org/). Another great option is to use [Visual Studio Code](https://code.visualstudio.com/) powered with [Git](https://git-scm.com), [Grammarly](https://marketplace.visualstudio.com/items?itemName=znck.grammarly), [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), and [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+
+> **Note**
+>
+> Use `alt` + `z` in VS Code to enable/disable line warping for an easier latex writing
+
+To compile PDF using a command-line, you can use the below steps:
+
+1. Change path to `main/`
+
+    ```shell
+    cd main
+    ```
+
+1. Compile to pdf
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+    ```
+
 ## How-to-use
 
 Read the detailed information in **thesis_template.tex**.
+
 In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully, this will help beginner users.
 
 ## Contents
