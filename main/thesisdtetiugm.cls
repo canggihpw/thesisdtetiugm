@@ -110,6 +110,11 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}% vertical centering
 
 \usepackage{tabularx}
+
+% Bookmark for UGM ETD self-upload
+\usepackage[bookmarks=true]{hyperref} 
+\usepackage[open,openlevel=0]{bookmark}
+
 %======================================
 %% Localise the Strings
 %======================================
@@ -758,6 +763,7 @@
 \newcommand{\thetoc}{
 	\newpage
 	\addcontentsline{toc}{chapter}{\contentsname}
+	\pdfbookmark[0]{chapter}{\contentsname}
 }
 % Adding entry to LOT
 \newcommand{\thelot}{
