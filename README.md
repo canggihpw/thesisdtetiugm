@@ -36,6 +36,13 @@ Read the detailed information in **thesis_template.tex**.
 
 In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully, this will help beginner users.
 
+In case the following `pgfplots` compatibility error occurs,
+```
+! Package pgfplots Error: Sorry, 'compat=1.16' is unknown in this context. Please use at most 'compat=1.15'.
+```
+open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
+This error typically occurs for Ubuntu/Linux users.
+
 ## Contents
 
 ### Main files
