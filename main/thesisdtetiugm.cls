@@ -395,10 +395,10 @@
 \iftoggle{bachelor}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
@@ -451,10 +451,10 @@
 \iftoggle{master}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 	%	\chapter*{\endorsementname}%
@@ -561,10 +561,10 @@
 \iftoggle{doctoral}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
@@ -711,7 +711,7 @@
 %======================================
 \newcommand{\chapternomenclature}[1]{
 	% \chapter*{\nomenclaturename} % use this if not using nomencl
-	\input{#1}	
+	\input{#1}
 	\addcontentsline{toc}{chapter}{\nomenclaturename}
 }
 
@@ -763,7 +763,6 @@
 \newcommand{\thetoc}{
 	\newpage
 	\addcontentsline{toc}{chapter}{\contentsname}
-	\pdfbookmark[0]{chapter}{\contentsname}
 }
 % Adding entry to LOT
 \newcommand{\thelot}{
