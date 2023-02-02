@@ -52,6 +52,9 @@
 %======================================
 %% Class & Package Loading
 %======================================
+% NOTE: 
+% 	report cause big space between caption and table.
+% 	article will solve it but in what cost?
 \LoadClass[12pt]{report}  % this class is based on the report class
 \usepackage{geometry} % easy layouting
 \usepackage{subcaption} % subfigure
@@ -73,7 +76,12 @@
 \usepackage{longtable}
 \usepackage{tabulary} % support auto-wrap table
 \usepackage{enumitem}
+
 \usepackage[labelsep=period]{caption} % use period as label separator
+% NOTE: nohypen for caption hypen format
+\DeclareCaptionJustification{nohyphen}{\hyphenpenalty=10000}
+\captionsetup[table]{skip=.25\baselineskip,justification=nohyphen}  # not yet fixed, set as you see fit
+
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
