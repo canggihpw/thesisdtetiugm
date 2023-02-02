@@ -101,8 +101,36 @@
 % [tb] means only on top or bottom of page, not in the midle of page
 \usepackage{flafter} % make image appear only after referenced
 
+\usepackage{soulpos}
+\ulposdef{\hly}{%
+  \mbox{%
+    \color{yellow}%
+    \rule[-.8ex]{\ulwidth}{11pt}%
+	\tolerance=1%
+	\emergencystretch=\maxdimen}}
+\ulposdef{\hlr}{%
+	\mbox{%
+	  \color{red}%
+	  \rule[-.8ex]{\ulwidth}{11pt}%
+	  \tolerance=1%
+	  \emergencystretch=\maxdimen}}
+\ulposdef{\hlg}{%
+  \mbox{%
+    \color{green}%
+    \rule[-.8ex]{\ulwidth}{11pt}%
+	\tolerance=1%
+	\emergencystretch=\maxdimen}}
+% higlight example:
+% \hly{text}  % yellow
+% \hlr{text}  % red
+% \hlg{text}  % green
+
+% uncomment to disable \hly, \hlr, \hlg
+% \renewcommand{\hly}[1]{#1}
+% \renewcommand{\hlr}[1]{#1}
+% \renewcommand{\hlg}[1]{#1}
+
 % TODO: {minted} or {pythonhighlight} coloring
-% \usepackage{hyperref} % hyperlink
 % \usepackage{pythonhighlight} % derivative of listings for python hylighting
 % \usepackage{minted} % for code coloring
 
@@ -978,20 +1006,30 @@
 % This \tolerance=9000 and \emergencystretch=0pt allow already existing hypen
 % \tolerance=9000
 % \emergencystretch=0pt
+
+% The \emergencystretch=0pt is dangereous because it can cause overflow
+% The \tolerance=9000 can cause hypens to appear.
+
+% Standard english use \righthyphenmin=3 and \lefthyphenmin=2
+% Here, the \righthyphenmin=4 and \lefthyphenmin=4 are needed to help 
+% \tolerance=1 and \emergencystretch=\maxdimen inside \mbox
 %======================================
+% NOTE: required to suppress hyphen inside highlight
 \hyphenpenalty=10000
 \hbadness=10000
-\tolerance=9000
-\emergencystretch=0pt
 
-% \tolerance=1
-% \emergencystretch=\maxdimen
+% \tolerance=9000
+% \emergencystretch=0pt
+
+\tolerance=1
+\emergencystretch=\maxdimen
 
 % \pretolerance=10000
 % \exhyphenpenalty=100
 
-% \righthyphenmin=62
-% \lefthyphenmin=62
+% TODO: this settings is not working here (for soulpos) but working in MWE
+% \righthyphenmin=4
+% \lefthyphenmin=4
 
 %======================================
 %% Single space after period 
