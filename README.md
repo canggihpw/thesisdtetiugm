@@ -6,7 +6,7 @@ This template can be used for a bachelor, master, and doctoral thesis at DTETI U
 
 ## What's new
 
-[2020-01-28] You can use command **\printendorsementpdf** to include your pdf file containing the endorsement. Otherwise, use **\printendorsement**
+[2020-01-28] You can use command `\printendorsementpdf` to include your pdf file containing the endorsement. Otherwise, use `\printendorsement`
 
 ## Compiling PDF
 
@@ -26,20 +26,42 @@ To compile PDF using a command-line, you can use the below steps:
 
 1. Compile to pdf
 
+    For common compile:
+
     ```shell
     pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
     ```
 
+    Some packages require multiple runs such as:
+
+    1. Updating `bib` and creating or using new `\label`:
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        bibtex "thesis_template"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        ```
+
+    1. Using highlights (`\hly, \hlg, and \hlr`):
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        ```
+
 ## How-to-use
 
-Read the detailed information in **thesis_template.tex**.
+Read the detailed information in `thesis_template.tex`.
 
-In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully, this will help beginner users.
+In case some `.sty` (packages) files are not available in your TeX installation, just copy the required one from the `packages/` directory into `main/` (side by side with `thesis_template.tex`). Hopefully, this will help beginner users.
 
 In case the following `pgfplots` compatibility error occurs,
-```
+
+```plaintext
 ! Package pgfplots Error: Sorry, 'compat=1.16' is unknown in this context. Please use at most 'compat=1.15'.
 ```
+
 open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
 This error typically occurs for Ubuntu/Linux users.
 
@@ -94,6 +116,10 @@ Your program codes are stored here. Using some more tweaking, a python code can 
 ### Equations
 
 Centralized compilable equations. You can compile the equations only pdf here, or call it from your `contents/*.tex` file. To make separated compiled equations, run `contents/equations-wrapper.tex`.
+
+### Nomenclature
+
+To build using `nomencl` (not yet fully supported), see [this tutorial](https://bytefreaks.net/applications/using-nomenclature-in-texstudio).
 
 ### Images
 
