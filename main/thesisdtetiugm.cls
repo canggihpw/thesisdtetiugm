@@ -1035,3 +1035,8 @@
 %% Single space after period 
 %======================================
 \frenchspacing % disable using \nonfrenchspacing or delete it altogehter
+
+%======================================
+%% Support non UTF-8 encoding
+%======================================
+\UseRawInputEncoding
