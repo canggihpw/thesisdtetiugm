@@ -21,6 +21,8 @@
 *.nlo
 *.nls
 *.synctex(busy)
+*.upa
+*.upb
 
 # used package
 *.sty
@@ -33,3 +35,6 @@ private/
 
 # editor
 .vscode/
+
+# playground
+main/playground.*
