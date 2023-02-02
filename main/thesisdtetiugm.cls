@@ -88,6 +88,7 @@
 \usepackage{ifthen}
 \usepackage{nomencl} % for nomenclature
 \usepackage{xcolor} % for coloring table
+\usepackage{afterpage} % for blank page
 
 \usepackage{siunitx} % for SI unit
 \usepackage{bm} % for bold math
