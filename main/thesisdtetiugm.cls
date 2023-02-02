@@ -110,6 +110,11 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}% vertical centering
 
 \usepackage{tabularx}
+
+% Bookmark for UGM ETD self-upload
+\usepackage[bookmarks=true]{hyperref} 
+\usepackage[open,openlevel=0]{bookmark}
+
 %======================================
 %% Localise the Strings
 %======================================
@@ -390,10 +395,10 @@
 \iftoggle{bachelor}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
@@ -446,10 +451,10 @@
 \iftoggle{master}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 	%	\chapter*{\endorsementname}%
@@ -556,10 +561,10 @@
 \iftoggle{doctoral}{
 	\newcommand{\printendorsementpdf}[1]{
 		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\approvalpage}
 		\includepdf[page={1}]{#1}
-		\addtocounter{page}{-1}
 	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
@@ -706,7 +711,7 @@
 %======================================
 \newcommand{\chapternomenclature}[1]{
 	% \chapter*{\nomenclaturename} % use this if not using nomencl
-	\input{#1}	
+	\input{#1}
 	\addcontentsline{toc}{chapter}{\nomenclaturename}
 }
 
