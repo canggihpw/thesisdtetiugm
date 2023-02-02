@@ -356,7 +356,7 @@
 				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
-					{untuk memenuhi sebagian persyaratan \\ mencapai derajat Magister}
+					{untuk memenuhi sebagian persyaratan \\ mencapai derajat magister}
 					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
 				\vspace{12pt}
 				\iftoggle{lang}
@@ -428,15 +428,22 @@
 %======================================
 %% Endorsement Page
 %======================================
+\newcommand{\printendorsementpdf}[1]{
+	%\chapter*{\approvalpage}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\addcontentsline{toc}{chapter}{\approvalpage}
+	\includepdf[page={1}]{#1}
+}
+
+\newcommand{\skippage}{
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{1}%
+    \newpage
+}
 % If Bachelor
 \iftoggle{bachelor}{
-	\newcommand{\printendorsementpdf}[1]{
-		%\chapter*{\approvalpage}
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{#1}
-	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
@@ -486,13 +493,6 @@
 
 % If Master
 \iftoggle{master}{
-	\newcommand{\printendorsementpdf}[1]{
-		%\chapter*{\approvalpage}
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{#1}
-	}
 	\newcommand{\printendorsement}{
 	%	\chapter*{\endorsementname}%
 		\fancyhf{}
@@ -519,29 +519,7 @@
 					{\textbf{Thesis Examiners}}\\
 				
 				\begin{center}
-					%% style1
-					% \begin{tabular*}{\textwidth}{cc}
-					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
-					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
-					% 	\textbf{\underline{\getsupervisor{1}{1}}} & \textbf{\underline{\getexaminer{1}{1}}} \\
-					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} & \\
-					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
-					% 	\textbf{\underline{\getsupervisor{2}{1}}} & \textbf{\underline{\getexaminer{2}{1}}} \\
-					% \end{tabular*}
-
-					%% style2
-					% \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}Xc>{\centering\arraybackslash}X}
-					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
-					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
-					% 	\textbf{\underline{\getsupervisor{1}{1}}}& &
-					% 	\textbf{\underline{\getexaminer{1}{1}}} \\
-					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
-					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
-					% 	\textbf{\underline{\getsupervisor{2}{1}}}& &
-					% 	\textbf{\underline{\getexaminer{2}{1}}} \\
-					% \end{tabularx}
-
-					%% style3
+					%% style1 (original style by Canggih)
 					\begin{tabular}{ccc}
 						\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
 						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
@@ -553,6 +531,29 @@
 						\textbf{\underline{\getexaminer{2}{1}}} \\
 					\end{tabular}
 
+					%% style2
+					% \begin{tabular*}{\textwidth}{cc}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}} & \textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} & \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}} & \textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabular*}
+
+					%% style3
+					% \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}Xc>{\centering\arraybackslash}X}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabularx}
+
+
 					%% style4
 					% \begin{tabular}{c}
 					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I}\\
@@ -562,11 +563,13 @@
 					% 	\vspace{0.3cm}\\
 					% 	\textbf{\underline{\getsupervisor{2}{1}}}\\
 					% \end{tabular}
+
+					% TODO: use tabulary
 				\end{center}
 				\vspace{0.5cm}
 				
 				\iftoggle{lang}
-					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
+					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar magister} 
 					{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
 				\vspace{0.3cm}
 				
@@ -596,13 +599,6 @@
 
 % If Doctoral
 \iftoggle{doctoral}{
-	\newcommand{\printendorsementpdf}[1]{
-		%\chapter*{\approvalpage}
-		\fancyhf{}
-		\fancyfoot[C]{\thepage}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{#1}
-	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
