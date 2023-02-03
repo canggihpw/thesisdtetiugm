@@ -228,14 +228,42 @@
 %======================================
 %% General Page Layout
 %======================================
-\geometry{
-	a4paper,
-	papersize={21cm,29.7cm},
-	top=4cm,
-	left=4cm,
-	right=3cm,
-	bottom=3cm
+% If Bachelor
+\iftoggle{bachelor}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
 }
+
+% If Master
+\iftoggle{master}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=2.5cm,
+		left=3.5cm,
+		right=2.5cm,
+		bottom=2.5cm
+	}
+}
+
+% If Doctoral
+\iftoggle{doctoral}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
+}
+
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{6pt}
 \setlength{\footskip}{1.5cm} 
@@ -688,15 +716,19 @@
 %% Scanned JPG Endorsement Page
 %======================================
 \newcommand{\printendorsementjpg}[1]{
-	\newpage
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}
+	\setcounter{page}{2}
 	\begin{center}
-	\vspace*{-4cm}
-	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
 	\addcontentsline{toc}{chapter}{\approvalpage}
-	\clearpage
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
 }
 
 %======================================
@@ -717,31 +749,74 @@
 	\chapter*{\statementname}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\statementname}
+	\restoregeometry % Restore Geometry to General Page Layout
+}
+
+%======================================
+%% Scanned PDF Preface Page
+%======================================
+\newcommand{\chapterstatementpdf}[1]{
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
+		\addcontentsline{toc}{chapter}{\statementname}
+		\includepdf[page={1}]{#1}
 }
 
 %======================================
 %% Scanned JPG Statement Page
 %======================================
 \newcommand{\chapterstatementjpg}[1]{
-	\newpage
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
 	\fancyfoot[C]{\thepage}
+	\setcounter{page}{3}
 	\begin{center}
-	\vspace*{-4cm}
-	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}	
 	\end{center}
 	\addcontentsline{toc}{chapter}{\statementname}
-	\clearpage
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
 }
 
 %======================================
 %% Preface
 %======================================
 \newcommand{\chapterpreface}[1]{
-	\restoregeometry% Restore Geometry
 	\chapter*{\prefacename}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\prefacename}
+}
+
+%======================================
+%% Scanned PDF Preface Page
+%======================================
+\newcommand{\chapterprefacepdf}[1]{
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
+		\addcontentsline{toc}{chapter}{\prefacename}
+		\includepdf[page={1}]{#1}
+}
+
+%======================================
+%% Scanned JPG Preface Page
+%======================================
+\newcommand{\chapterprefacejpg}[1]{
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\setcounter{page}{4}
+	\begin{center}
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
+	\end{center}
+	\addcontentsline{toc}{chapter}{\prefacename}
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
 }
 
 %======================================

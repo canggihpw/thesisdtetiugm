@@ -90,24 +90,34 @@
 
 \printendorsement
 % \printendorsementpdf{contents/endorsement/endorsement.pdf}
-% \printendorsementjpg{sample/scanned-endorsement.jpg}
+% \printendorsementjpg{images/scanned-endorsement.jpg}
 
 %---- DEDICATION PAGE ---- 
 % \chapterdedication{contents/dedication/dedication}
 
 %---- STATEMENT PAGE ----
 \cleardoublepage \phantomsection
-% Select statement page type. If you want to use your own JPG file,  
-%	use \chapterstatementjpg{<your *.jpg file path>}. Otherwise, 
-%	use \chapterstatement{contents/statement/statement}.
+% Select statement page type. If you want to use your own PDF file,  
+% 	use \chapterstatementpdf{<your *.pdf file path>}, or if you want to use JPG file, use 
+% 	\chapterstatementjpg{<your *.jpg file path>}. 
+%   Otherwise, use \chapterstatement{contents/statement/statement}.
 %	Choose one only. Comment out unused command(s).
 
 \chapterstatement{contents/statement/statement}
-%\chapterstatementjpg{images/scanned-statement.jpg}
+% \chapterstatementpdf{images/scanned-statement.pdf}
+% \chapterstatementjpg{images/scanned-statement.jpg}
 
 %---- PREFACE PAGE ----
 \cleardoublepage \phantomsection
+% Select preface page type. If you want to use your own PDF file,  
+% 	use \chapterprefacepdf{<your *.pdf file path>}, or if you want to use JPG file, use 
+% 	\chapterprefacejpg{<your *.jpg file path>}. 
+%   Otherwise, use \chapterpreface{contents/preface/preface}.
+% 	Choose one only. Comment out unused command(s).
+
 \chapterpreface{contents/preface/preface}
+% \chapterprefacepdf{images/scanned-preface.pdf}
+% \chapterprefacejpg{images/scanned-preface.jpg}
 
 %---- NOMENCLATURE PAGE ----
 \cleardoublepage \phantomsection
