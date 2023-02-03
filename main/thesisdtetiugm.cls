@@ -748,7 +748,7 @@
 %% Nomenclature
 %======================================
 \newcommand{\chapternomenclature}[1]{
-	% \chapter*{\nomenclaturename} % use this if not using nomencl
+	\chapter*{\nomenclaturename} % use this if not using nomencl, comment to use nomencl (!WIP)
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\nomenclaturename}
 }
