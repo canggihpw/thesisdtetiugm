@@ -228,14 +228,42 @@
 %======================================
 %% General Page Layout
 %======================================
-\geometry{
-	a4paper,
-	papersize={21cm,29.7cm},
-	top=4cm,
-	left=4cm,
-	right=3cm,
-	bottom=3cm
+% If Bachelor
+\iftoggle{bachelor}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
 }
+
+% If Master
+\iftoggle{master}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=2.5cm,
+		left=3.5cm,
+		right=2.5cm,
+		bottom=2.5cm
+	}
+}
+
+% If Doctoral
+\iftoggle{doctoral}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
+}
+
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{6pt}
 \setlength{\footskip}{1.5cm} 
