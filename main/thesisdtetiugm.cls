@@ -719,13 +719,13 @@
 	% \newpage
 	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
-	\fancyfoot[C]{\thepage}
-	\setcounter{page}{2}
 	\begin{center}
 	% \vspace*{-4cm}
 	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
 	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
 	\addcontentsline{toc}{chapter}{\approvalpage}
 	% \clearpage
 	\restoregeometry % Restore Geometry to General Page Layout
@@ -769,13 +769,13 @@
 	% \newpage
 	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
-	\fancyfoot[C]{\thepage}
-	\setcounter{page}{3}
 	\begin{center}
 	% \vspace*{-4cm}
 	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
-	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}	
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
 	\addcontentsline{toc}{chapter}{\statementname}
 	% \clearpage
 	\restoregeometry % Restore Geometry to General Page Layout
@@ -807,13 +807,13 @@
 	% \newpage
 	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
-	\fancyfoot[C]{\thepage}
-	\setcounter{page}{4}
 	\begin{center}
 	% \vspace*{-4cm}
 	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
 	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
 	\addcontentsline{toc}{chapter}{\prefacename}
 	% \clearpage
 	\restoregeometry % Restore Geometry to General Page Layout
