@@ -80,7 +80,7 @@
 \usepackage[labelsep=period]{caption} % use period as label separator
 % NOTE: nohypen for caption hypen format
 \DeclareCaptionJustification{nohyphen}{\hyphenpenalty=10000}
-\captionsetup[table]{skip=.25\baselineskip,justification=nohyphen}  # not yet fixed, set as you see fit
+\captionsetup[table]{skip=.25\baselineskip,justification=nohyphen}  % not yet fixed, set as you see fit
 
 \usepackage{tikz}
 \usepackage{pgfplots}
