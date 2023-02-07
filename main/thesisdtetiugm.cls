@@ -154,7 +154,8 @@
 % 		https://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
 % 	2. [hidelinks] used to hide box of clickables
 % 	3. [bookmarks=true] used to generate bookmark for ETD self-upload
-\usepackage[bookmarks=true,hidelinks]{hyperref}  % hyperlink and navigation on output pdf
+% 	4. [bookmarksnumbered] to add the chapter number in the bookmark
+\usepackage[bookmarks=true,hidelinks,bookmarksnumbered]{hyperref}  % hyperlink and navigation on output pdf
 \usepackage[open,openlevel=0]{bookmark}
 
 %======================================
