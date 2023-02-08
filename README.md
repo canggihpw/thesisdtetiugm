@@ -52,18 +52,21 @@ To compile PDF using a command-line, you can use the below steps:
 
 ## How-to-use
 
-Read the detailed information in `thesis_template.tex`.
+1. Read the detailed information in `thesis_template.tex`.
 
-In case some `.sty` (packages) files are not available in your TeX installation, just copy the required one from the `packages/` directory into `main/` (side by side with `thesis_template.tex`). Hopefully, this will help beginner users.
+1. In case some `.sty` (packages) files are not available in your TeX installation, just copy the required one from the `packages/` directory into `main/` (side by side with `thesis_template.tex`). Hopefully, this will help beginner users.
 
-In case the following `pgfplots` compatibility error occurs,
+1. In case the following `pgfplots` compatibility error occurs,
 
-```plaintext
-! Package pgfplots Error: Sorry, 'compat=1.16' is unknown in this context. Please use at most 'compat=1.15'.
-```
+    ```plaintext
+    ! Package pgfplots Error: Sorry, 'compat=1.16' is unknown in this context. Please use at most 'compat=1.15'.
+    ```
 
-open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
-This error typically occurs for Ubuntu/Linux users.
+    open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
+
+1. In case an `Undefined control sequence.` error occurs in the `\UseRawInputEncoding` command of `thesisdtetiugm.cls`, open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and comment out `\UseRawInputEncoding` by adding a `%` before it.
+
+    The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
 
 ## Contents
 
