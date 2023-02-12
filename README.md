@@ -6,6 +6,8 @@ This template can be used for a bachelor, master, and doctoral thesis at DTETI U
 
 ## What's new
 
+[2020-02-12] Delegated as semi-formal master thesis template. Major upgrades including (1) better support for bookmarks and highlight, (2) migrating master thesis format page margin to `left=3.5cm` and `2.5cm` for others, and (3) support multi-row table.
+
 [2020-01-28] You can use command `\printendorsementpdf` to include your pdf file containing the endorsement. Otherwise, use `\printendorsement`
 
 ## Compiling PDF
@@ -64,7 +66,7 @@ To compile PDF using a command-line, you can use the below steps:
 
     open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
 
-1. In case an `Undefined control sequence.` error occurs in the `\UseRawInputEncoding` command of `thesisdtetiugm.cls`, open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and comment out `\UseRawInputEncoding` by adding a `%` before it.
+1. In the case of an `Undefined control sequence.` error occurs in the `\UseRawInputEncoding` command of `thesisdtetiugm.cls`, open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and comment out `\UseRawInputEncoding` by adding a `%` before it.
 
     The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
 
@@ -122,7 +124,7 @@ Centralized compilable equations. You can compile the equations only pdf here, o
 
 ### Nomenclature
 
-To build using `nomencl` (not yet fully supported), see [this tutorial](https://bytefreaks.net/applications/using-nomenclature-in-texstudio).
+To build using `nomencl` (not yet fully supported), see [this tutorial](https://bytefreaks.net/applications/using-nomenclature-in-texstudio). Currently, only support manual nomenclature as shown in `main/contents/nomenclature/nomenclature.tex`.
 
 ### Images
 
