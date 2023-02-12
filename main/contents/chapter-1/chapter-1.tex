@@ -9,7 +9,7 @@ Contoh penggunaan sitasi \cite{lukito2016,santosa2011user}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{contents/chapter-1/sample-fig.png}
+	\includegraphics[width=10cm]{images/sample-fig.png}
 	\caption{Contoh gambar.}
 	\label{Fig: Contoh gambar}
 \end{figure}
@@ -21,7 +21,7 @@ Contoh gambar terlihat pada Gambar \ref{Fig: Contoh gambar}. Gambar diambil dari
 	\caption{tabel ini}
 	\vspace{0.5em}
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|l|r|r|}
 		\hline
 		ID & Tinggi Badan (cm) & Berat Badan (kg) \\
 		\hline \hline
@@ -31,7 +31,25 @@ Contoh gambar terlihat pada Gambar \ref{Fig: Contoh gambar}. Gambar diambil dari
 	\end{tabular}
 	\label{Tab: Tabel Tinggi Berat}
 \end{table}
+
 Contoh penulisan tabel bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat}.
+
+\begin{table}[h]
+	\caption{tabel ini}
+	\vspace{0.5em}
+	\centering
+	\begin{tabulary}{\linewidth}{|l|C|C|}
+		\hline
+		ID & Tinggi Badan Mahasiswa di Universitas Gadjah Mada (cm) & Berat Badan Mahasiswa di Universitas Gadjah Mada(kg) \\
+		\hline \hline
+		A23 &  \multicolumn{1}{r|}{173} &  \multicolumn{1}{r|}{62} \\
+		A25 &  \multicolumn{1}{r|}{185} &  \multicolumn{1}{r|}{78} \\
+		A10 &  \multicolumn{1}{r|}{162} &  \multicolumn{1}{r|}{70} \\ \hline
+	\end{tabulary}
+	\label{Tab: Tabel Tinggi Berat Kolom Panjang}
+\end{table}
+
+Contoh penulisan tabel dengan nama kolom sangat panjang denagn bantuan \textit{tabulary} bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat Kolom Panjang}.
 
 \section{Penulisan formula}
 Contoh penulisan formula
@@ -45,6 +63,9 @@ Contoh formula \textbf{tanpa} menggunakan "mathit": $PVA = RTD$
 
 Contoh formula \textbf{dengan} menggunakan "mathit": $\mathit{PVA = RTD}$
 
+Untuk mengutip persamaan dapat juga menggunakan (\ref{eq:miqp-obj}). Persamaan dapat ditulis secara sentral pada file "equations/equations.tex".
+    
+    \inputeq{equations/equations}{miqp-obj}
 
 
 \section{Contoh list}

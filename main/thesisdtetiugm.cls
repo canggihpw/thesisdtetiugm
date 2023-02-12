@@ -1,6 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Filename: thesisdtetiugm.cls
-%%%  Class File  for Master Thesis at DTETI UGM
+%%%  Class File for Master Thesis at DTETI UGM
+%%%  Version: 0.1.0
+%%%  Latest update: 2023-02-12
+%%%  ---
+%%%  Maintained by Muhammad Yasirroni
+%%%  [muhammadyasirroni@mail.ugm.ac.id]
+%%%  [https://github.com/yasirroni/thesisdtetiugm]
+%%%  
+%%%  Forked from the original author:
+%%%  Canggih Puspo Wibowo
+%%%  at https://github.com/canggihpw/thesisdtetiugm/commit/9625b19
 %%%  --- 
 %%%  Written by Canggih Puspo Wibowo
 %%%  [canggihpw@gmail.com]
@@ -17,17 +27,15 @@
 %======================================
 %% Initial Code
 %======================================
-\RequirePackage[english,bahasa]{babel} % language
+\RequirePackage[english,bahasa]{babel}% language
 \RequirePackage{etoolbox}% conditional statement
 \RequirePackage{indentfirst}
 \RequirePackage{setspace}
 \RequirePackage{times}% font
 \RequirePackage[T1]{fontenc}% quotation
 \RequirePackage{graphicx}
-\RequirePackage{calc}%Simple arithmetic lib
-\RequirePackage{pdfpages} %include pdf file in latex
-
-
+\RequirePackage{calc}% Simple arithmetic lib
+\RequirePackage{pdfpages}% include pdf file in latex
 
 %======================================
 %% Option Declaration
@@ -45,28 +53,28 @@
 \DeclareOption{doctoral}{\togglefalse{bachelor} \togglefalse{master} \toggletrue{doctoral}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}  % pass any unknown option to the report class
 
-
 %======================================
 %% Option Execution
 %======================================
 \ExecuteOptions{bachelor,bahasa} % set default degree and language
 \ProcessOptions
 
-
 %======================================
 %% Class & Package Loading
 %======================================
+% NOTE: 
+% 	report cause big space between caption and table.
+% 	article will solve it but in what cost?
 \LoadClass[12pt]{report}  % this class is based on the report class
-\usepackage{geometry}% easy layouting
-%\usepackage{hyperref}% hyperlink
+\usepackage{geometry} % easy layouting
 \usepackage{subcaption} % subfigure
-\usepackage{tocloft}% edit font toc
-\usepackage{fancyhdr}% page number
+\usepackage{tocloft} % edit font toc
+\usepackage{fancyhdr} % page number
 \usepackage[cmex10]{amsmath}
 \usepackage{cite}
 \usepackage{multirow}
 \usepackage{titlesec}
-\usepackage{ragged2e}% text alignment
+\usepackage{ragged2e} % text alignment
 \usepackage{algorithm}
 \usepackage{algcompatible}
 \usepackage{algpseudocode}
@@ -76,19 +84,89 @@
 \usepackage{ifthen}
 \usepackage{forloop}
 \usepackage{longtable}
+\usepackage{tabulary} % support auto-wrap table
 \usepackage{enumitem}
+
 \usepackage[labelsep=period]{caption} % use period as label separator
+% NOTE: nohypen for caption hypen format
+\DeclareCaptionJustification{nohyphen}{\hyphenpenalty=10000}
+\captionsetup[table]{skip=.25\baselineskip,justification=nohyphen}  % not yet fixed, set as you see fit
+
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
+\usepackage{ifthen}
+\usepackage{nomencl} % for nomenclature
+\usepackage{xcolor} % for coloring table
+\usepackage{afterpage} % for blank page
+
+\usepackage{siunitx} % for SI unit
+\usepackage{bm} % for bold math
+\usepackage{float} % make image and table able to be together with text with force
+% Use [H] to make no text between the image and the text
+% Use [h] to softly placed the image and allow text between (recommended)
+% \begin{table}[h]
+% \begin{figure}[H]
+% another option is to use [tb]
+% [tb] means only on top or bottom of page, not in the midle of page
+\usepackage{flafter} % make image appear only after referenced
+
+\usepackage{soulpos}
+\ulposdef{\hly}{%
+  \mbox{%
+    \color{yellow}%
+    \rule[-.8ex]{\ulwidth}{11pt}%
+	\tolerance=1%
+	\emergencystretch=\maxdimen}}
+\ulposdef{\hlr}{%
+	\mbox{%
+	  \color{red}%
+	  \rule[-.8ex]{\ulwidth}{11pt}%
+	  \tolerance=1%
+	  \emergencystretch=\maxdimen}}
+\ulposdef{\hlg}{%
+  \mbox{%
+    \color{green}%
+    \rule[-.8ex]{\ulwidth}{11pt}%
+	\tolerance=1%
+	\emergencystretch=\maxdimen}}
+% higlight example:
+% \hly{text}  % yellow
+% \hlr{text}  % red
+% \hlg{text}  % green
+
+% uncomment to disable \hly, \hlr, \hlg
+% \renewcommand{\hly}[1]{#1}
+% \renewcommand{\hlr}[1]{#1}
+% \renewcommand{\hlg}[1]{#1}
+
+% TODO: {minted} or {pythonhighlight} coloring
+% \usepackage{pythonhighlight} % derivative of listings for python hylighting
+% \usepackage{minted} % for code coloring
+
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes}
-\bibliographystyle{IEEEtran}
 
 % Page break for equation
 \allowdisplaybreaks
+
+\usepackage{array}%support wrap inside table
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}% horizontal centering
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}% vertical centering
+
+\usepackage{tabularx}
+
+% Bookmark for UGM ETD self-upload
+% NOTE: 
+% 	1. hyperref usually loaded last, see:
+% 		https://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
+% 	2. [hidelinks] used to hide box of clickables
+% 	3. [bookmarks=true] used to generate bookmark for ETD self-upload
+% 	4. [bookmarksnumbered] to add the chapter number in the bookmark
+\usepackage[bookmarks=true,hidelinks,bookmarksnumbered]{hyperref}  % hyperlink and navigation on output pdf
+\usepackage[open,openlevel=0]{bookmark}
 
 %======================================
 %% Localise the Strings
@@ -116,12 +194,15 @@
 	}
 }
 
+\renewcommand{\nomname}{\nomenclaturename}
+
 % redefine commands in babel bahasa
 \addto\captionsbahasa{%
 	\renewcommand{\prefacename}{PRAKATA}%
 	\renewcommand{\contentsname}{DAFTAR ISI}%
 	\renewcommand{\listfigurename}{DAFTAR GAMBAR}%
 	\renewcommand{\listtablename}{DAFTAR TABEL}%
+	\renewcommand{\lstlistlistingname}{DAFTAR \lstlistingname}% List of Listings -> List of Algorithms
 	\renewcommand{\abstractname}{Intisari}%
 	\renewcommand{\partname}{BAGIAN}%
 	\renewcommand{\chaptername}{BAB}%
@@ -131,6 +212,7 @@
 	\renewcommand{\indexname}{Indek}%
 	\renewcommand{\figurename}{Gambar}%
 	\renewcommand{\tablename}{Tabel}%
+	\renewcommand{\lstlistingname}{Kode}%
 	\renewcommand{\pagename}{Halaman}%
 }
 
@@ -140,6 +222,7 @@
 	\renewcommand{\contentsname}{CONTENTS}%
 	\renewcommand{\listfigurename}{LIST OF FIGURES}%
 	\renewcommand{\listtablename}{LIST OF TABLES}%
+	\renewcommand{\lstlistlistingname}{LIST OF CODES}%
 	\renewcommand{\abstractname}{\emph{Abstract}}%
 	\renewcommand{\partname}{PART}%
 	\renewcommand{\chaptername}{CHAPTER}%
@@ -149,20 +232,49 @@
 	\renewcommand{\indexname}{Index}%
 	\renewcommand{\figurename}{Figure}%
 	\renewcommand{\tablename}{Table}%
+	\renewcommand{\lstlistingname}{Code}%
 	\renewcommand{\pagename}{Page}%
 }
 
 %======================================
 %% General Page Layout
 %======================================
-\geometry{
-	a4paper,
-	papersize={21cm,29.7cm},
-	top=4cm,
-	left=4cm,
-	right=3cm,
-	bottom=3cm
+% If Bachelor
+\iftoggle{bachelor}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
 }
+
+% If Master
+\iftoggle{master}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=2.5cm,
+		left=3.5cm,
+		right=2.5cm,
+		bottom=2.5cm
+	}
+}
+
+% If Doctoral
+\iftoggle{doctoral}{
+	\geometry{
+		a4paper,
+		papersize={21cm,29.7cm},
+		top=4cm,
+		left=4cm,
+		right=3cm,
+		bottom=3cm
+	}
+}
+
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{6pt}
 \setlength{\footskip}{1.5cm} 
@@ -288,11 +400,11 @@
 				\textbf{#2}\\
 				\vspace{1cm}
 				\iftoggle{lang}
-					{untuk memenuhi bagian persyaratan \\ mencapai derajat Sarjana S-2}
+					{untuk memenuhi sebagian persyaratan \\ mencapai derajat magister}
 					{submitted in partial fulfillment of the requirements \\ for the degree of master}\\
 				\vspace{12pt}
 				\iftoggle{lang}
-					{Program Studi \@program} 
+					{Program \@program}
 					{\@program \vspace{1em} Program}\\
 				\@major \\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
@@ -360,15 +472,22 @@
 %======================================
 %% Endorsement Page
 %======================================
+\newcommand{\printendorsementpdf}[1]{
+	%\chapter*{\approvalpage}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\addcontentsline{toc}{chapter}{\approvalpage}
+	\includepdf[page={1}]{#1}
+}
+
+\newcommand{\skippage}{
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{1}%
+    \newpage
+}
 % If Bachelor
 \iftoggle{bachelor}{
-	\newcommand{\printendorsementpdf}{
-		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
-		\addtocounter{page}{-1}
-	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
@@ -418,13 +537,6 @@
 
 % If Master
 \iftoggle{master}{
-	\newcommand{\printendorsementpdf}{
-		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
-		\addtocounter{page}{-1}
-	}
 	\newcommand{\printendorsement}{
 	%	\chapter*{\endorsementname}%
 		\fancyhf{}
@@ -451,6 +563,7 @@
 					{\textbf{Thesis Examiners}}\\
 				
 				\begin{center}
+					%% style1 (original style by Canggih)
 					\begin{tabular}{ccc}
 						\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
 						\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
@@ -461,17 +574,52 @@
 						\textbf{\underline{\getsupervisor{2}{1}}}& &
 						\textbf{\underline{\getexaminer{2}{1}}} \\
 					\end{tabular}
+
+					%% style2
+					% \begin{tabular*}{\textwidth}{cc}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}} & \textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} & \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}} & \textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabular*}
+
+					%% style3
+					% \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}Xc>{\centering\arraybackslash}X}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I} &\hspace{2cm} & \iftoggle{lang}{Anggota Dewan Penguji Lain}{Examiners} \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{1}{1}}} \\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II} &\hspace{2cm} &   \\
+					% 	\vspace{0.3cm} & \vspace{0.3cm} & \vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}}& &
+					% 	\textbf{\underline{\getexaminer{2}{1}}} \\
+					% \end{tabularx}
+
+
+					%% style4
+					% \begin{tabular}{c}
+					% 	\iftoggle{lang}{Pembimbing I}{Supervisor I}\\
+					% 	\vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{1}{1}}}\\
+					% 	\iftoggle{lang}{Pembimbing II}{Supervisor II}\\
+					% 	\vspace{0.3cm}\\
+					% 	\textbf{\underline{\getsupervisor{2}{1}}}\\
+					% \end{tabular}
+
+					% TODO: use tabulary
 				\end{center}
 				\vspace{0.5cm}
 				
 				\iftoggle{lang}
-					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar Magister} 
+					{Tesis ini telah diterima sebagai salah satu persyaratan \\ untuk memperoleh gelar magister} 
 					{This thesis has been accepted as a partial fulfillment \\ for the degree of Master}\\
 				\vspace{0.3cm}
 				
 				\iftoggle{lang}{Tanggal:}{Date: $\ldots\ldots$} \\
 				\iftoggle{lang}
-					{Pengelola Program Studi \@program} 
+					{Pengelola Program \@program} 
 					{Program Coordinator of \@program}\\
 				\vspace{1.3cm}
 				\textbf{\underline{\@programcoorName}}\\
@@ -481,7 +629,7 @@
 				\iftoggle{lang}{Mengetahui,\\}{} 
 				\iftoggle{lang}
 					{Ketua Departemen/Wakil Penanggung Jawab Program Studi}
-					 {Head of Department}\\
+					{Head of Department}\\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng}\\
 				\vspace{1.3cm}
 				\textbf{\underline{\@depheadName}}\\
@@ -495,13 +643,6 @@
 
 % If Doctoral
 \iftoggle{doctoral}{
-	\newcommand{\printendorsementpdf}{
-		%\chapter*{\approvalpage}
-		\addtocounter{page}{1}
-		\addcontentsline{toc}{chapter}{\approvalpage}
-		\includepdf[page={1}]{contents/endorsement/endorsement.pdf}
-		\addtocounter{page}{-1}
-	}
 	\newcommand{\printendorsement}{
 		\chapter*{\approvalpage}
 		\fancyhf{}
@@ -586,15 +727,19 @@
 %% Scanned JPG Endorsement Page
 %======================================
 \newcommand{\printendorsementjpg}[1]{
-	\newpage
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
-	\fancyfoot[C]{\thepage}
 	\begin{center}
-	\vspace*{-4cm}
-	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
 	\addcontentsline{toc}{chapter}{\approvalpage}
-	\clearpage
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
 }
 
 %======================================
@@ -615,39 +760,82 @@
 	\chapter*{\statementname}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\statementname}
+	\restoregeometry % Restore Geometry to General Page Layout
+}
+
+%======================================
+%% Scanned PDF Preface Page
+%======================================
+\newcommand{\chapterstatementpdf}[1]{
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
+		\addcontentsline{toc}{chapter}{\statementname}
+		\includepdf[page={1}]{#1}
 }
 
 %======================================
 %% Scanned JPG Statement Page
 %======================================
 \newcommand{\chapterstatementjpg}[1]{
-	\newpage
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
 	\fancyhf{}
-	\fancyfoot[C]{\thepage}
 	\begin{center}
-	\vspace*{-4cm}
-	\noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}		
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
 	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
 	\addcontentsline{toc}{chapter}{\statementname}
-	\clearpage
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
 }
 
 %======================================
 %% Preface
 %======================================
 \newcommand{\chapterpreface}[1]{
-	\restoregeometry% Restore Geometry
 	\chapter*{\prefacename}%
 	\input{#1}
 	\addcontentsline{toc}{chapter}{\prefacename}
 }
 
 %======================================
+%% Scanned PDF Preface Page
+%======================================
+\newcommand{\chapterprefacepdf}[1]{
+		\fancyhf{}
+		\fancyfoot[C]{\thepage}
+		\addcontentsline{toc}{chapter}{\prefacename}
+		\includepdf[page={1}]{#1}
+}
+
+%======================================
+%% Scanned JPG Preface Page
+%======================================
+\newcommand{\chapterprefacejpg}[1]{
+	% \newpage
+	\newgeometry{right=0cm,left=0cm,top=0cm,bottom=0cm}
+	\fancyhf{}
+	\begin{center}
+	% \vspace*{-4cm}
+	% \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{#1}}
+	\noindent\makebox[\textwidth]{\includegraphics[height=\paperheight]{#1}}
+	\end{center}
+	\fancyfoot[C]{\thepage}
+	\vspace*{-4cm}
+	\addcontentsline{toc}{chapter}{\prefacename}
+	% \clearpage
+	\restoregeometry % Restore Geometry to General Page Layout
+}
+
+%======================================
 %% Nomenclature
 %======================================
 \newcommand{\chapternomenclature}[1]{
-	\chapter*{\nomenclaturename}
-	\input{#1}	
+	\chapter*{\nomenclaturename} % use this if not using nomencl, comment to use nomencl (!WIP)
+	\input{#1}
 	\addcontentsline{toc}{chapter}{\nomenclaturename}
 }
 
@@ -734,12 +922,29 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 
+% \makeatletter
+% {\small % Capture font definitions of \small
+% \xdef\f@size@small{\f@size}
+% \xdef\f@baselineskip@small{\f@baselineskip}
+% \tiny % Capture font definitions for \tiny
+% \xdef\f@size@tiny{\f@size}
+% \xdef\f@baselineskip@tiny{\f@baselineskip}
+% }
+% % Define new \smalltotiny font size
+% \newcommand{\costomfontsize}{%
+%   \fontsize
+%     {\fpeval{5}}
+%     {\fpeval{}%
+%   \selectfont
+% }
+
 \lstdefinestyle{mystyle}{ 
 	commentstyle=\color{codegreen},
 	keywordstyle=\color{magenta},
-	numberstyle=\tiny\color{codegray},
+	numberstyle=\footnotesize\color{codegray},
 	stringstyle=\color{codepurple},
-	basicstyle=\small,
+	basicstyle=\footnotesize,
+	% basicstyle=\linespread{0.1},
 	breakatwhitespace=false,         
 	breaklines=true,                 
 	captionpos=b,                    
@@ -776,11 +981,14 @@
 % set figure, table, and equation style
 \@addtoreset {equation}{chapter}
 \renewcommand\theequation
-{\ifnum \c@chapter>\z@ \@arabic\c@chapter-\fi \@arabic\c@equation}
+{\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@equation}
 \renewcommand \thefigure
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@figure}
 \renewcommand \thetable
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@table}
+
+% TODO: \thelstlisting
+\AtBeginDocument{\renewcommand*{\thelstlisting}{\ifnum \c@chapter>\z@ \@arabic\c@chapter-\fi \arabic{lstlisting}}}
 
 % Section style
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -856,7 +1064,66 @@
 	\input{#1}
 }
 
-%----------------
-% List
-%---------------
+%======================================
+%% List
+%======================================
 \setlist[enumerate]{topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex}
+
+%======================================
+%% New command \ubar to make \bar but underline
+%=====================================
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+
+%======================================
+%% New command to cite equation and nomenclature
+%% 	- equation should be started with \EQUATION <<EQUATION NAME>>
+%% 	- equation should be ended with \ENDEQUATION
+%%	- cite equation using \inputeq{<<PATH_TO_EQUATION_TEX>>}{<<EQUATION NAME>>}
+%======================================
+\newcommand{\inputeq}[2]{% #1 = file, #2 = eq name
+	\long\def\EQUATION ##1#2 {}%
+	\input{#1}
+}
+\let\ENDEQUATION\endinput
+
+%======================================
+%% Disable hyphenation unless urgent or writen manually
+%% Other commented parameters are optional
+%
+% This \tolerance=9000 and \emergencystretch=0pt allow already existing hypen
+% \tolerance=9000
+% \emergencystretch=0pt
+
+% The \emergencystretch=0pt is dangereous because it can cause overflow
+% The \tolerance=9000 can cause hypens to appear.
+
+% Standard english use \righthyphenmin=3 and \lefthyphenmin=2
+% Here, the \righthyphenmin=4 and \lefthyphenmin=4 are needed to help 
+% \tolerance=1 and \emergencystretch=\maxdimen inside \mbox
+%======================================
+% NOTE: required to suppress hyphen inside highlight
+\hyphenpenalty=10000
+\hbadness=10000
+
+% \tolerance=9000
+% \emergencystretch=0pt
+
+\tolerance=1
+\emergencystretch=\maxdimen
+
+% \pretolerance=10000
+% \exhyphenpenalty=100
+
+% TODO: this settings is not working here (for soulpos) but working in MWE
+% \righthyphenmin=4
+% \lefthyphenmin=4
+
+%======================================
+%% Single space after period 
+%======================================
+\frenchspacing % disable using \nonfrenchspacing or delete it altogehter
+
+%======================================
+%% Support non UTF-8 encoding
+%======================================
+\UseRawInputEncoding

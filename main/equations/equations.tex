@@ -1,0 +1,89 @@
+\EQUATION miqp-obj
+\begin{equation}
+  \label{eq:miqp-obj}
+  \min_{\mathbf{x}} \frac{1}{2} \mathbf{x}^{T}Q\mathbf{x}+\mathbf{c}^{T}\mathbf{x}
+\end{equation}
+\ENDEQUATION
+ 
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons
+\begin{equation}
+  \label{eq:miqp-cons}
+  A\mathbf{x} \preceq \mathbf{b}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons-bounds
+\begin{equation}
+  \label{eq:miqp-cons-bounds}
+  \mathbf{b}^{lb} \preceq A\mathbf{x} \preceq \mathbf{b}^{ub}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons-ineq
+\begin{equation}
+  \label{eq:miqp-cons-ineq}
+  A^{ineq}\mathbf{x} \preceq \mathbf{b}^{ineq}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons-eq
+\begin{equation}
+  \label{eq:miqp-cons-eq}
+  A^{eq}\mathbf{x} = \mathbf{b}^{eq}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-decision-variable-bounds
+\begin{equation}
+  \label{eq:miqp-decision-variable-bounds}
+  \mathbf{x}^{lb} \preceq \mathbf{x} \preceq \mathbf{x}^{ub}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons-greater-than
+\begin{equation}
+  \label{eq:miqp-cons-greater-than}
+  -A^{ineq}\mathbf{x} \preceq -\mathbf{b}^{ineq} \Leftrightarrow A^{ineq}\mathbf{x} \succeq \mathbf{b}^{ineq}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION miqp-cons-eq-using-bounds
+\begin{equation}
+  \label{eq:miqp-cons-eq-using-bounds}
+  \mathbf{b}^{lb} = \mathbf{b}^{ub} \Rightarrow A^{eq}\mathbf{x} = \mathbf{b}^{lb} = \mathbf{b}^{ub}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION milp-obj
+\begin{equation}
+  \label{eq:milp-obj}
+  \min_{\mathbf{x}} \mathbf{c}^{T}\mathbf{x}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations
+
+\EQUATION milp-cons
+\begin{equation}
+  \label{eq:milp-cons}
+  A\mathbf{x} \preceq \mathbf{b}
+\end{equation}
+\ENDEQUATION
+
+\bigskip % use this to make a space between equations

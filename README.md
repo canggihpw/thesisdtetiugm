@@ -1,64 +1,141 @@
 # Latex Template for Thesis Writing at DTETI UGM
 
 ## Info
-This template can be used for bachelor, master, and doctoral thesis at DTETI UGM, even though for the last one, it still can be considered as a "beta" release. Send me email or create pull-request if you have improvements for this template.
+
+This template can be used for a bachelor, master, and doctoral thesis at DTETI UGM, even though for the last one, it still can be considered as a "beta" release. Send me an email or create a pull request if you have improvements for this template.
 
 ## What's new
-[2020-01-28] You can use command **\printendorsementpdf** to include your own pdf file containing the endorsement. Otherwise, use **\printendorsement**
 
-## How-to-use 
-Read the detailed information in **thesis_template.tex**.
-In case some **sty files** are not available in your TeX installation, just copy the required one from **packages/** directory into the same directory as **thesis_template.tex**. Hopefully this will help beginner users.
+[2020-02-12] Delegated as semi-formal master thesis template. Major upgrades including (1) better support for bookmarks and highlight, (2) migrating master thesis format page margin to `left=3.5cm` and `2.5cm` for others, and (3) support multi-row table.
 
-## Content:
+[2020-01-28] You can use command `\printendorsementpdf` to include your pdf file containing the endorsement. Otherwise, use `\printendorsement`
+
+## Compiling PDF
+
+The most simple way to compile LaTeX is to use an online compiler such as [Overleaf](https://www.overleaf.com/). One beginner-friendly option for offline compilation is to use [MiKTeX](https://miktex.org/) with [TeXstudio](https://www.texstudio.org/). Another great option is to use [Visual Studio Code](https://code.visualstudio.com/) powered with [Git](https://git-scm.com), [Grammarly](https://marketplace.visualstudio.com/items?itemName=znck.grammarly), [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), and [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+
+> **Note**
+>
+> Use `alt` + `z` in VS Code to enable/disable line warping for an easier latex writing
+
+To compile PDF using a command-line, you can use the below steps:
+
+1. Change path to `main/`
+
+    ```shell
+    cd main
+    ```
+
+1. Compile to pdf
+
+    For common compile:
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+    ```
+
+    Some packages require multiple runs such as:
+
+    1. Updating `bib` and creating or using new `\label`:
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        bibtex "thesis_template"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        ```
+
+    1. Using highlights (`\hly, \hlg, and \hlr`):
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
+        ```
+
+## How-to-use
+
+1. Read the detailed information in `thesis_template.tex`.
+
+1. In case some `.sty` (packages) files are not available in your TeX installation, just copy the required one from the `packages/` directory into `main/` (side by side with `thesis_template.tex`). Hopefully, this will help beginner users.
+
+1. In case the following `pgfplots` compatibility error occurs,
+
+    ```plaintext
+    ! Package pgfplots Error: Sorry, 'compat=1.16' is unknown in this context. Please use at most 'compat=1.15'.
+    ```
+
+    open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and edit `\pgfplotsset{compat=1.16}` to `\pgfplotsset{compat=1.15}`.  
+
+1. In the case of an `Undefined control sequence.` error occurs in the `\UseRawInputEncoding` command of `thesisdtetiugm.cls`, open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and comment out `\UseRawInputEncoding` by adding a `%` before it.
+
+    The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
+
+## Contents
+
 ### Main files
-```
+
+```plaintext
 |-- thesisdtetiugm.cls (Class file)
 |-- thesis_template.tex (The template file)
 ```
+
 ### Content directory
-This directory and the subdirectories are not compulsory. I arranged in such a way to make it easier in writing.
-```
+
+This directory and the subdirectories are not compulsory. I arranged it in such a way as to make it easier in writing.
+
+```plaintext
 |-- contents/
     |-- nomenclature/
-    	|-- nomenclature.tex
+        |-- nomenclature.tex
     |-- statement/
-    	|-- statement.tex
+        |-- statement.tex
     |-- endorsement/
-    	|-- endorsement.pdf
+        |-- endorsement.pdf
     |-- preface/
-    	|-- preface.tex
+        |-- preface.tex
     |-- abstract/
-    	|-- abstract.tex
+        |-- abstract.tex
         |-- intisari.tex
     |-- chapter-1/
-    	|-- chapter-1.tex
+        |-- chapter-1.tex
     |-- chapter-2/
-    	|-- chapter-2.tex
-        |-- sample-fig.png
+        |-- chapter-2.tex
     |-- chapter-3/
-    	|-- chapter-3.tex
+        |-- chapter-3.tex
     |-- chapter-4/
-    	|-- chapter-4.tex
+        |-- chapter-4.tex
     |-- chapter-5/
-    	|-- chapter-5.tex
+        |-- chapter-5.tex
     |-- appendix/
-    	|-- appendix.tex
+        |-- appendix.tex
 ```
+
+### Bibtex
+
+Contains `references.bib` as your centralized BibTeX file and `IEEEtran.bst` as a BibTeX formatter following IEEE Transactions format.
+
+### Codes
+
+Your program codes are stored here. Using some more tweaking, a python code can be run from inside LaTeX and the output will be embedded inside the output pdf.
+
+### Equations
+
+Centralized compilable equations. You can compile the equations only pdf here, or call it from your `contents/*.tex` file. To make separated compiled equations, run `contents/equations-wrapper.tex`.
+
+### Nomenclature
+
+To build using `nomencl` (not yet fully supported), see [this tutorial](https://bytefreaks.net/applications/using-nomenclature-in-texstudio). Currently, only support manual nomenclature as shown in `main/contents/nomenclature/nomenclature.tex`.
+
+### Images
+
+Your images sit here.
+
 ### Additional files
-```
+
+```plaintext
 |-- packages/ (Additional sty files for helping beginner users)
-|-- references.bib (Bibtex file)
-```
-### Sample directory
-Only used for template sample.
-```
-|-- sample/
-    |-- logougm.png
-    |-- sample_code.m
-    |-- scanned-endorsement.jpg
-    |-- scanned-statement.jpg
 ```
 
 ## License
+
 MIT License

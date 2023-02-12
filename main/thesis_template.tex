@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Filename: thesis_template.tex
 %%%  ---
-%%%  Template for Master Thesis at DTETI UGM   		
+%%%  Template for Master Thesis at DTETI UGM
 %%%  Created using thesisdtetiugm.cls
 %%%  --- 
 %%%  Written by Canggih Puspo Wibowo
@@ -12,8 +12,24 @@
 %%    to change the basic language used
 %% User option "bachelor", "master", or "doctoral"
 %% 	  to change the degree
-% \documentclass[<bachelor/master/doctoral>,<bahasa/english>]{thesisdtetiugm}
-\documentclass[doctoral,bahasa]{thesisdtetiugm}
+
+%% TODO: \usepackage graphicx for relative path shortcut
+%\documentclass[<bachelor/master/doctoral>,<bahasa/english>]{thesisdtetiugm} 
+\documentclass[master,bahasa,table,xcdraw]{thesisdtetiugm} % <table> and <xcdraw> for coloring table
+
+%======================================
+% Choose what to be compiled
+%   - Comment unedited chapter for fast review compilation
+%======================================
+\includeonly{
+    contents/chapter-1/chapter-1,
+    contents/chapter-2/chapter-2,
+    contents/chapter-3/chapter-3,
+    contents/chapter-4/chapter-4,
+    contents/chapter-5/chapter-5
+    }
+%======================================
+
 %======================================
 % Information Input
 %======================================
@@ -44,56 +60,75 @@
 \addexaminer{<<Examiner 9>>}{<<NIP 9>>}
 
 %======================================
+% Initialize nomenclature (!WIP)
+%======================================
+% \makenomenclature % !WIP
+%======================================
 
-% correct bad hyphenation here [example]
+%======================================
+% Correct bad hyphenation if needed
+%======================================
+% example correcting bad hyphenation (uncomment to use):
 % \babelhyphenation[<<english/bahasa>>]{op-tical net-works semi-conduc-tor}
-%% Uncomment block of code below to disable hyphenation
-%\tolerance=1
-%\emergencystretch=\maxdimen
-%\hyphenpenalty=10000
-%\hbadness=10000
 
 \begin{document}
 %======================================
 % Create cover etc
 %======================================
 
-%---- COVER ----
-\printcover{sample/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
-% *Choose one
+%---- COVER ---- 
+% Choose one between Pendadaran/Tesis/Ringkasan Tesis*
+% I don't know why, but using Pra Pendadaran also possible
+\printcover{images/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
 
 %---- ENDORSEMENT PAGE ----
+\cleardoublepage \phantomsection
 % Select endorsement page type. If you want to use your own PDF file,  
 % 	use \printendorsementpdf, or if you want to use JPG file, use 
 % 	\printendorsementjpg. Otherwise, use \printendorsement.
 % 	Choose one only. Comment out unused command(s).
-%
-\printendorsement
-%\printendorsementpdf
-%\printendorsementjpg{sample/scanned-endorsement.jpg}
 
-%---- DEDICATION PAGE ----
-\chapterdedication{contents/dedication/dedication}
+\printendorsement
+% \printendorsementpdf{contents/endorsement/endorsement.pdf}
+% \printendorsementjpg{images/scanned-endorsement.jpg}
+
+%---- DEDICATION PAGE ---- 
+% \chapterdedication{contents/dedication/dedication}
 
 %---- STATEMENT PAGE ----
-% Select statement page type. If you want to use your own JPG file,  
-%	use \chapterstatementjpg{<your *.jpg file path>}. Otherwise, 
-%	use \chapterstatement{contents/statement/statement}.
+\cleardoublepage \phantomsection
+% Select statement page type. If you want to use your own PDF file,  
+% 	use \chapterstatementpdf{<your *.pdf file path>}, or if you want to use JPG file, use 
+% 	\chapterstatementjpg{<your *.jpg file path>}. 
+%   Otherwise, use \chapterstatement{contents/statement/statement}.
 %	Choose one only. Comment out unused command(s).
-%
+
 \chapterstatement{contents/statement/statement}
-%\chapterstatementjpg{sample/scanned-statement.jpg}
+% \chapterstatementpdf{images/scanned-statement.pdf}
+% \chapterstatementjpg{images/scanned-statement.jpg}
 
 %---- PREFACE PAGE ----
+\cleardoublepage \phantomsection
+% Select preface page type. If you want to use your own PDF file,  
+% 	use \chapterprefacepdf{<your *.pdf file path>}, or if you want to use JPG file, use 
+% 	\chapterprefacejpg{<your *.jpg file path>}. 
+%   Otherwise, use \chapterpreface{contents/preface/preface}.
+% 	Choose one only. Comment out unused command(s).
+
 \chapterpreface{contents/preface/preface}
+% \chapterprefacepdf{images/scanned-preface.pdf}
+% \chapterprefacejpg{images/scanned-preface.jpg}
 
 %---- NOMENCLATURE PAGE ----
+\cleardoublepage \phantomsection
 \chapternomenclature{contents/nomenclature/nomenclature}
 
 %---- ABSTRACT PAGE----
+\cleardoublepage \phantomsection
 \chapterabstract{contents/abstract/abstract}
 
 %---- INTISARI PAGE----
+\cleardoublepage \phantomsection
 \chapterintisari{contents/abstract/intisari}
 %======================================
 
@@ -102,10 +137,13 @@
 % Create Table of Contents, List of Figures, List of Tables
 % <Do not change this part>
 %======================================
+\cleardoublepage \phantomsection
 \thetoc
 \tableofcontents
+\cleardoublepage \phantomsection
 \thelof
 \listoffigures
+\cleardoublepage \phantomsection
 \thelot
 \listoftables
 %======================================
@@ -114,29 +152,32 @@
 %  MAIN TEXT
 %======================================
 \startmain
-% You can change 
-%    the filename and location of the files inputted
+% You can change the filename and location of the files inputted.
+\cleardoublepage \phantomsection
 \include{contents/chapter-1/chapter-1}
+\cleardoublepage \phantomsection
 \include{contents/chapter-2/chapter-2}
+\cleardoublepage \phantomsection
 \include{contents/chapter-3/chapter-3}
+\cleardoublepage \phantomsection
 \include{contents/chapter-4/chapter-4}
+\cleardoublepage \phantomsection
 \include{contents/chapter-5/chapter-5}
 %======================================
 
 %======================================
 %  References
 %======================================
+\cleardoublepage \phantomsection
 \thereferences
-% You can change 
-%    the filename and location of the files inputted
-\bibliography{references}
+\bibliographystyle{bibtex/IEEEtran}
+\bibliography{bibtex/references}
 %======================================
 
 %======================================
 %  Appendix
 %======================================
-% You can change 
-%    the filename and location of the files inputted
+\cleardoublepage \phantomsection
 \chapterappendix{contents/appendix/appendix}
 %======================================
 

@@ -1,3 +1,4 @@
+# latex generated file
 *.log
 *.aux
 *.dvi
@@ -16,3 +17,24 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.nlg
+*.nlo
+*.nls
+*.synctex(busy)
+*.upa
+*.upb
+
+# used package
+*.sty
+
+# exclude package in packages/
+!packages/*
+
+# private folder to ignore in git
+private/
+
+# editor
+.vscode/
+
+# playground
+main/playground.*
