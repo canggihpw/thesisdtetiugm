@@ -1,6 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Filename: thesisdtetiugm.cls
-%%%  Class File  for Master Thesis at DTETI UGM
+%%%  Class File for Master Thesis at DTETI UGM
+%%%  ---
+%%%  Maintained by Muhammad Yasirroni
+%%%  [muhammadyasirroni@mail.ugm.ac.id]
+%%%  [https://github.com/yasirroni/thesisdtetiugm]
+%%%  
+%%%  Forked from the original author:
+%%%  Canggih Puspo Wibowo
+%%%  at https://github.com/canggihpw/thesisdtetiugm/commit/9625b19
 %%%  --- 
 %%%  Written by Canggih Puspo Wibowo
 %%%  [canggihpw@gmail.com]
