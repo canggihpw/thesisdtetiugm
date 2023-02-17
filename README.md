@@ -70,6 +70,8 @@ To compile PDF using a command-line, you can use the below steps:
 
     The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
 
+1. In the case of a page suddenly restarting from 0 due to the use of highlights, try to breakdowns the highlights. For cleaning highlights, use the `utilities/replace_highlight.ipynb`, It uses Python, so you might need to install Python first beforehand.
+
 ## Contents
 
 ### Main files
