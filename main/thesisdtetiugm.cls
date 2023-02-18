@@ -112,6 +112,8 @@
 \usepackage{flafter} % make image appear only after referenced
 
 \usepackage{soulpos}
+\newcount\SOUL@minus
+\newcount\SOULPOS@minus
 \ulposdef{\hly}{%
   \mbox{%
     \color{yellow}%
