@@ -113,7 +113,6 @@
 
 \usepackage{soulpos}
 \newcount\SOUL@minus
-\newcount\SOULPOS@minus
 \ulposdef{\hly}{%
   \mbox{%
     \color{yellow}%
@@ -810,7 +809,7 @@
 		\fancyhf{}
 		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\prefacename}
-		\includepdf[page={1}]{#1}
+		\includepdf[page={-}]{#1}
 }
 
 %======================================
