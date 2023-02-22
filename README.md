@@ -88,11 +88,11 @@ To compile PDF using a command-line, you can use the below steps:
 
     The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
 
-1. In the case of a page suddenly restarting from 0 due to the use of highlights, try to breakdowns the highlights. For cleaning highlights, use the `utilities/replace_highlight.ipynb`, It uses Python, so you might need to install Python first beforehand.
+1. In the case of a page suddenly restarting from 0 due to the use of highlights, try to breakdowns the highlights. For cleaning highlights, use the `utilities/remove_highlight.ipynb`, It uses Python, so you might need to install Python first beforehand.
 
     > **Warning**
     >
-    > The `utilities/replace_highlight.ipynb` and `utilities/replace_textit.ipynb` use regex and unable to count. Thus, it will fail to remove properly if there is nested curly bracket `{...{...}...}` inside. For example, `\hly{Hey \textit{italic} text}` will falsely removed to `\Hey \textit{italic text}`.
+    > The `utilities/remove_highlight.ipynb` and `utilities/remove_textit.ipynb` use regex and unable to count. Thus, it will fail to remove properly if there is nested curly bracket `{...{...}...}` inside. For example, `\hly{Hey \textit{italic} text}` will falsely removed to `\Hey \textit{italic text}`.
 
 ## Contents
 
