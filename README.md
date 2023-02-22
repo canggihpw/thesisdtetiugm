@@ -34,6 +34,18 @@ To compile PDF using a command-line, you can use the below steps:
     pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
     ```
 
+    To include printing error:
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=batchmode -file-line-error "thesis_template.tex"
+    ```
+
+    or
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=nonstopmode "thesis_template.tex"
+    ```
+
     Some packages require multiple runs such as:
 
     1. Updating `bib` and creating or using a new `\label`` require multiple compilations:
