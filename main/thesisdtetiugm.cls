@@ -375,7 +375,7 @@
 				\textbf{
 					\iftoggle{lang}
 					{\MakeUppercase{Program Studi \@program}}
-					{\MakeUppercase{\@program \vspace{1em} Program}}\\
+					{\MakeUppercase{\@program Program}}\\
 					\iftoggle{lang}{\MakeUppercase{\@departmentIna}}{\MakeUppercase{\@departmentEng}} \\
 					\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}}
 					\MakeUppercase{\@university} \\ 
@@ -406,7 +406,7 @@
 				\vspace{12pt}
 				\iftoggle{lang}
 					{Program \@program}
-					{\@program \vspace{1em} Program}\\
+					{\@program Program}\\
 				\@major \\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
 				\vspace{1cm}
@@ -447,7 +447,7 @@
 				\vspace{1.5cm}
 				\iftoggle{lang}
 					{Bidang Studi \@program} 
-					{\@program \vspace{1em} Program}\\
+					{\@program Program}\\
 				\vfill
 				\includegraphics[width=0.5\textwidth]{#1}
 				\vfill

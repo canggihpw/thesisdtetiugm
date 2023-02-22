@@ -22,11 +22,11 @@
 %   - Comment unedited chapter for fast review compilation
 %======================================
 \includeonly{
-    contents/chapter-1/chapter-1-sum-en,
-    contents/chapter-2/chapter-2-sum-en,
-    contents/chapter-3/chapter-3-sum-en,
-    contents/chapter-4/chapter-4-sum-en,
-    contents/chapter-5/chapter-5-sum-en
+    contents/chapter-1/chapter-1,
+    contents/chapter-2/chapter-2,
+    contents/chapter-3/chapter-3,
+    contents/chapter-4/chapter-4,
+    contents/chapter-5/chapter-5
     }
 %======================================
 
@@ -85,9 +85,13 @@
 % Create cover etc
 %======================================
 
-%---- COVER ---- 
-\printcover{images/logougm.png}{Summary of Thesis}
+%---- PROOF OF SUBMISSIONS ---- 
+% \includepdf[pages=-]{private/BUKTI_PENDAFTARAN_PENDADARAN.pdf}
 
+%---- COVER ---- 
+% Choose one between Pendadaran/Tesis/Ringkasan Tesis*
+% I don't know why, but using Pra Pendadaran also possible
+\printcover{images/logougm.png}{Pendadaran/Tesis/Ringkasan Tesis*}
 
 %---- ENDORSEMENT PAGE ----
 \cleardoublepage \phantomsection
@@ -100,9 +104,46 @@
 % \printendorsementpdf{contents/endorsement/endorsement.pdf}
 % \printendorsementjpg{images/scanned-endorsement.jpg}
 
+%---- DEDICATION PAGE ---- 
+% In master degree format, there is no dedication page.
+
+% \chapterdedication{contents/dedication/dedication}
+
+%---- STATEMENT PAGE ----
+\cleardoublepage \phantomsection
+% Select statement page type. If you want to use your own PDF file, use
+%   \chapterstatementpdf{<your *.pdf file path>}, or if you want to use JPG
+%   file, use \chapterstatementjpg{<your *.jpg file path>}.  Otherwise, use
+%   \chapterstatement{contents/statement/statement}. Choose one only. Comment
+%   out unused command(s).
+
+\chapterstatement{contents/statement/statement}
+% \chapterstatementpdf{images/scanned-statement.pdf}
+% \chapterstatementjpg{images/scanned-statement.jpg}
+
+%---- PREFACE PAGE ----
+\cleardoublepage \phantomsection
+% Select preface page type. If you want to use your own PDF file,
+%   use \chapterprefacepdf{<your *.pdf file path>}, or if you want to use JPG
+%   file, use \chapterprefacejpg{<your *.jpg file path>}. Otherwise, use
+%   \chapterpreface{contents/preface/preface}. Choose one only. Comment out
+%   unused command(s).
+
+\chapterpreface{contents/preface/preface}
+% \chapterprefacepdf{images/scanned-preface.pdf}
+% \chapterprefacejpg{images/scanned-preface.jpg}
+
+%---- NOMENCLATURE PAGE ----
+\cleardoublepage \phantomsection
+\chapternomenclature{contents/nomenclature/nomenclature}
+
 %---- ABSTRACT PAGE----
 \cleardoublepage \phantomsection
 \chapterabstract{contents/abstract/abstract}
+
+%---- INTISARI PAGE----
+\cleardoublepage \phantomsection
+\chapterintisari{contents/abstract/intisari}
 %======================================
 
 
@@ -113,6 +154,12 @@
 \cleardoublepage \phantomsection
 \thetoc
 \tableofcontents
+\cleardoublepage \phantomsection
+\thelof
+\listoffigures
+\cleardoublepage \phantomsection
+\thelot
+\listoftables
 %======================================
 
 %======================================
@@ -121,15 +168,15 @@
 \startmain
 % You can change the filename and location of the files inputted.
 \cleardoublepage \phantomsection
-\include{contents/chapter-1/chapter-1-sum-en}
+\include{contents/chapter-1/chapter-1}
 \cleardoublepage \phantomsection
-\include{contents/chapter-2/chapter-2-sum-en}
+\include{contents/chapter-2/chapter-2}
 \cleardoublepage \phantomsection
-\include{contents/chapter-3/chapter-3-sum-en}
+\include{contents/chapter-3/chapter-3}
 \cleardoublepage \phantomsection
-\include{contents/chapter-4/chapter-4-sum-en}
+\include{contents/chapter-4/chapter-4}
 \cleardoublepage \phantomsection
-\include{contents/chapter-5/chapter-5-sum-en}
+\include{contents/chapter-5/chapter-5}
 %======================================
 
 %======================================
@@ -139,6 +186,13 @@
 \thereferences
 \bibliographystyle{bibtex/IEEEtran}
 \bibliography{bibtex/references}
+%======================================
+
+%======================================
+%  Appendix
+%======================================
+\cleardoublepage \phantomsection
+\chapterappendix{contents/appendix/appendix}
 %======================================
 
 \end{document}
