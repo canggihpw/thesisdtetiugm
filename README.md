@@ -176,7 +176,21 @@ Your images sit here.
 
 ## Notes
 
-1. Electronic Theses and Dissertations (ETD) [submission](https://unggah.etd.ugm.ac.id/) require splitted file that can be copied. You can use [ilovepdf](https://www.ilovepdf.com/split_pdf#split,range). Printing using Microsoft Print to PDF will resulted in rejected submission.
+1. Electronic Theses and Dissertations (ETD) [submission](https://unggah.etd.ugm.ac.id/) requires splitted files that can be copied. You can use [ilovepdf](https://www.ilovepdf.com/split_pdf#split,range). Printing using Microsoft Print to PDF will result in a rejected submission.
+
+1. If you are going to send this repository to someone else, you can remove all artifacts using Git command:
+
+    Check what will be deleted:
+
+    ```shell
+    git clean -dfXn
+    ```
+
+    Delete after you are sure about what are you doing
+
+    ```shell
+    git clean -dfXn
+    ```
 
 ## License
 
