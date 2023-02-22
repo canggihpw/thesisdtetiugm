@@ -36,7 +36,7 @@ To compile PDF using a command-line, you can use the below steps:
 
     Some packages require multiple runs such as:
 
-    1. Updating `bib` and creating or using new `\label`:
+    1. Updating `bib` and creating or using a new `\label`` require multiple compilations:
 
         ```shell
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
@@ -45,12 +45,30 @@ To compile PDF using a command-line, you can use the below steps:
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         ```
 
-    1. Using highlights (`\hly, \hlg, and \hlr`):
+    1. Using highlights (`\hly, \hlg, and \hlr`) require two times compilation:
 
         ```shell
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         ```
+
+<!-- 
+    1. Compiling summary:
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        bibtex "summary_id"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        ```
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        bibtex "summary_en"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        ```
+ -->
 
 ## How-to-use
 
@@ -71,6 +89,10 @@ To compile PDF using a command-line, you can use the below steps:
     The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
 
 1. In the case of a page suddenly restarting from 0 due to the use of highlights, try to breakdowns the highlights. For cleaning highlights, use the `utilities/replace_highlight.ipynb`, It uses Python, so you might need to install Python first beforehand.
+
+    > **Warning**
+    >
+    > The `utilities/replace_highlight.ipynb` and `utilities/replace_textit.ipynb` use regex and unable to count. Thus, it will fail to remove properly if there is nested curly bracket `{...{...}...}` inside. For example, `\hly{Hey \textit{italic} text}` will falsely removed to `\Hey \textit{italic text}`.
 
 ## Contents
 
@@ -137,6 +159,10 @@ Your images sit here.
 ```plaintext
 |-- packages/ (Additional sty files for helping beginner users)
 ```
+
+## Notes
+
+1. Electronic Theses and Dissertations (ETD) [submission](https://unggah.etd.ugm.ac.id/) require splitted file that can be copied. You can use [ilovepdf](https://www.ilovepdf.com/split_pdf#split,range). Printing using Microsoft Print to PDF will resulted in rejected submission.
 
 ## License
 
