@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Filename: thesis_template.tex
+%%%  ---
+%%%  Template for Master Thesis at DTETI UGM
+%%%  Created using thesisdtetiugm.cls
+%%%  --- 
+%%%  Written by Canggih Puspo Wibowo
+%%%  [canggihpw@gmail.com]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use option "bahasa" or "english" 
+%%    to change the basic language used
+%% User option "bachelor", "master", or "doctoral"
+%% 	  to change the degree
+
+%% TODO: \usepackage graphicx for relative path shortcut
+%\documentclass[<bachelor/master/doctoral>,<bahasa/english>]{thesisdtetiugm} 
+\documentclass[master,english,table,xcdraw]{thesisdtetiugm} % <table> and <xcdraw> for coloring table
+
+%======================================
+% Choose what to be compiled
+%   - Comment unedited chapter for fast review compilation
+%======================================
+\includeonly{
+    contents/chapter-1/chapter-1-sum-en,
+    contents/chapter-2/chapter-2-sum-en,
+    contents/chapter-3/chapter-3-sum-en,
+    contents/chapter-4/chapter-4-sum-en,
+    contents/chapter-5/chapter-5-sum-en
+    }
+%======================================
+
+%======================================
+% Information Input
+%======================================
+% Input author's name and ID number
+\author{<<AUTHOR>>}{<<NIM>>}
+
+% Input the thesis' title
+\title{<<Thesis title>>}
+
+% Program and the head of the program
+\program{<<Program name>>}{<<Program coordinator>>}{<<NIP>>}
+% \program{Magister Program Studi Teknik Elektro}{M. Isnaeni Bambang Setyonegoro, Dr. Ir., M.T.}{196510041993031003}
+
+% Name of department head and NIP
+\departmenthead{<<Head of the department>>}{<<NIP>>}
+\major{<<Major>>}
+\yearsubmit{<<year submit>>}
+\examdate{<<Exam date>>}
+% \departmenthead{Hanung Adi Nugroho, Ir., S.T., M.E., Ph.D., IPM.}{197802242002121001}
+% \major{Konsentrasi Sistem Tenaga Listrik}
+% \yearsubmit{2023}
+% \examdate{\ldots\ldots\ldots}
+
+% Name of thesis supervisors/promotors
+\addsupervisor{<<Supervisor 1>>}{<<NIP>>}
+\addsupervisor{<<Supervisor 2>>}{<<NIP>>}
+\addsupervisor{<<Supervisor 3>>}{<<NIP>>}
+% Name of examiners
+\addexaminer{<<Examiner 1>>}{<<NIP 1>>}
+\addexaminer{<<Examiner 2>>}{<<NIP 2>>}
+\addexaminer{<<Examiner 3>>}{<<NIP 3>>}
+\addexaminer{<<Examiner 4>>}{<<NIP 4>>}
+\addexaminer{<<Examiner 5>>}{<<NIP 5>>}
+\addexaminer{<<Examiner 6>>}{<<NIP 6>>}
+\addexaminer{<<Examiner 7>>}{<<NIP 7>>}
+\addexaminer{<<Examiner 8>>}{<<NIP 8>>}
+\addexaminer{<<Examiner 9>>}{<<NIP 9>>}
+
+%======================================
+% Initialize nomenclature (!WIP)
+%======================================
+% \makenomenclature % !WIP
+%======================================
+
+%======================================
+% Correct bad hyphenation if needed
+%======================================
+% example correcting bad hyphenation (uncomment to use):
+% \babelhyphenation[<<english/bahasa>>]{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+%======================================
+% Create cover etc
+%======================================
+
+%---- COVER ---- 
+\printcover{images/logougm.png}{Summary of Thesis}
+
+
+%---- ENDORSEMENT PAGE ----
+\cleardoublepage \phantomsection
+% Select endorsement page type. If you want to use your own PDF file,
+% 	use \printendorsementpdf, or if you want to use JPG file, use
+% 	\printendorsementjpg. Otherwise, use \printendorsement.
+% 	Choose one only. Comment out unused command(s).
+
+\printendorsement
+% \printendorsementpdf{contents/endorsement/endorsement.pdf}
+% \printendorsementjpg{images/scanned-endorsement.jpg}
+
+%---- ABSTRACT PAGE----
+\cleardoublepage \phantomsection
+\chapterabstract{contents/abstract/abstract}
+%======================================
+
+
+%======================================
+% Create Table of Contents, List of Figures, List of Tables
+% <Do not change this part>
+%======================================
+\cleardoublepage \phantomsection
+\thetoc
+\tableofcontents
+%======================================
+
+%======================================
+%  MAIN TEXT
+%======================================
+\startmain
+% You can change the filename and location of the files inputted.
+\cleardoublepage \phantomsection
+\include{contents/chapter-1/chapter-1-sum-en}
+\cleardoublepage \phantomsection
+\include{contents/chapter-2/chapter-2-sum-en}
+\cleardoublepage \phantomsection
+\include{contents/chapter-3/chapter-3-sum-en}
+\cleardoublepage \phantomsection
+\include{contents/chapter-4/chapter-4-sum-en}
+\cleardoublepage \phantomsection
+\include{contents/chapter-5/chapter-5-sum-en}
+%======================================
+
+%======================================
+%  References
+%======================================
+\cleardoublepage \phantomsection
+\thereferences
+\bibliographystyle{bibtex/IEEEtran}
+\bibliography{bibtex/references}
+%======================================
+
+\end{document}
