@@ -52,8 +52,7 @@ To compile PDF using a command-line, you can use the below steps:
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         ```
 
-<!-- 
-    1. Compiling summary:
+    1. You can use the below commands to compile `summary_en` and `summary_id`:
 
         ```shell
         pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
@@ -68,7 +67,10 @@ To compile PDF using a command-line, you can use the below steps:
         pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
         pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
         ```
- -->
+
+        > **Note**
+        >
+        > Don't forget to create all necessarily chapters (e.g., `contents/chapter-1/chapter-1-sum-en`, `contents/chapter-2/chapter-2-sum-en`, `contents/chapter-1/chapter-1-sum-id`, and `contents/chapter-2/chapter-2-sum-id`).
 
 ## How-to-use
 
