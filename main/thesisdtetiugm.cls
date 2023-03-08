@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Filename: thesisdtetiugm.cls
 %%%  Class File for Master Thesis at DTETI UGM
-%%%  Version: 0.1.0
-%%%  Latest update: 2023-02-12
+%%%  Version: 0.1.1
+%%%  Latest update: 2023-02-22
 %%%  ---
 %%%  Maintained by Muhammad Yasirroni
 %%%  [muhammadyasirroni@mail.ugm.ac.id]
@@ -112,6 +112,7 @@
 \usepackage{flafter} % make image appear only after referenced
 
 \usepackage{soulpos}
+\newcount\SOUL@minus
 \ulposdef{\hly}{%
   \mbox{%
     \color{yellow}%
@@ -374,7 +375,7 @@
 				\textbf{
 					\iftoggle{lang}
 					{\MakeUppercase{Program Studi \@program}}
-					{\MakeUppercase{\@program \vspace{1em} Program}}\\
+					{\MakeUppercase{\@program Program}}\\
 					\iftoggle{lang}{\MakeUppercase{\@departmentIna}}{\MakeUppercase{\@departmentEng}} \\
 					\iftoggle{lang}{\MakeUppercase{\@facultyIna}}{\MakeUppercase{\@facultyEng}}
 					\MakeUppercase{\@university} \\ 
@@ -405,7 +406,7 @@
 				\vspace{12pt}
 				\iftoggle{lang}
 					{Program \@program}
-					{\@program \vspace{1em} Program}\\
+					{\@program Program}\\
 				\@major \\
 				\iftoggle{lang}{\@departmentIna}{\@departmentEng} \\
 				\vspace{1cm}
@@ -446,7 +447,7 @@
 				\vspace{1.5cm}
 				\iftoggle{lang}
 					{Bidang Studi \@program} 
-					{\@program \vspace{1em} Program}\\
+					{\@program Program}\\
 				\vfill
 				\includegraphics[width=0.5\textwidth]{#1}
 				\vfill
@@ -808,7 +809,7 @@
 		\fancyhf{}
 		\fancyfoot[C]{\thepage}
 		\addcontentsline{toc}{chapter}{\prefacename}
-		\includepdf[page={1}]{#1}
+		\includepdf[page={-}]{#1}
 }
 
 %======================================

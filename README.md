@@ -34,9 +34,21 @@ To compile PDF using a command-line, you can use the below steps:
     pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
     ```
 
+    To include printing error:
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=batchmode -file-line-error "thesis_template.tex"
+    ```
+
+    or
+
+    ```shell
+    pdflatex.exe --synctex=1 --interaction=nonstopmode "thesis_template.tex"
+    ```
+
     Some packages require multiple runs such as:
 
-    1. Updating `bib` and creating or using new `\label`:
+    1. Updating `bib` and creating or using a new `\label`` require multiple compilations:
 
         ```shell
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
@@ -45,12 +57,32 @@ To compile PDF using a command-line, you can use the below steps:
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         ```
 
-    1. Using highlights (`\hly, \hlg, and \hlr`):
+    1. Using highlights (`\hly, \hlg, and \hlr`) require two times compilation:
 
         ```shell
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         pdflatex.exe --synctex=1 --interaction=batchmode "thesis_template.tex"
         ```
+
+    1. You can use the below commands to compile `summary_en` and `summary_id`:
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        bibtex "summary_id"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_id.tex"
+        ```
+
+        ```shell
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        bibtex "summary_en"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        pdflatex.exe --synctex=1 --interaction=batchmode "summary_en.tex"
+        ```
+
+        > **Note**
+        >
+        > Don't forget to create all necessarily chapters (e.g., `contents/chapter-1/chapter-1-sum-en`, `contents/chapter-2/chapter-2-sum-en`, `contents/chapter-1/chapter-1-sum-id`, and `contents/chapter-2/chapter-2-sum-id`).
 
 ## How-to-use
 
@@ -69,6 +101,12 @@ To compile PDF using a command-line, you can use the below steps:
 1. In the case of an `Undefined control sequence.` error occurs in the `\UseRawInputEncoding` command of `thesisdtetiugm.cls`, open the [`thesisdtetiugm.cls`](main/thesisdtetiugm.cls) file and comment out `\UseRawInputEncoding` by adding a `%` before it.
 
     The `pgfplots` and `\UseRawInputEncoding` errors typically occur for Ubuntu/Linux users.
+
+1. In the case of a page suddenly restarting from 0 due to the use of highlights, try to breakdowns the highlights. For cleaning highlights, use the `utilities/remove_highlight.ipynb`, It uses Python, so you might need to install Python first beforehand.
+
+    > **Warning**
+    >
+    > The `utilities/remove_highlight.ipynb` and `utilities/remove_textit.ipynb` use regex and unable to count. Thus, it will fail to remove properly if there is nested curly bracket `{...{...}...}` inside. For example, `\hly{Hey \textit{italic} text}` will falsely removed to `\Hey \textit{italic text}`.
 
 ## Contents
 
@@ -135,6 +173,24 @@ Your images sit here.
 ```plaintext
 |-- packages/ (Additional sty files for helping beginner users)
 ```
+
+## Notes
+
+1. Electronic Theses and Dissertations (ETD) [submission](https://unggah.etd.ugm.ac.id/) requires splitted files that can be copied. You can use [ilovepdf](https://www.ilovepdf.com/split_pdf#split,range). Printing using Microsoft Print to PDF will result in a rejected submission.
+
+1. If you are going to send this repository to someone else, you can remove all artifacts using Git command:
+
+    Check what will be deleted:
+
+    ```shell
+    git clean -dfXn
+    ```
+
+    Delete after you are sure about what are you doing
+
+    ```shell
+    git clean -dfXn
+    ```
 
 ## License
 
